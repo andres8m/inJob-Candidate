@@ -1,6 +1,8 @@
 package com.example.inin.injob;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,12 +13,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.inin.injob.models.LoginResponse;
+import com.example.inin.injob.models.UserData;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void attemptLogin(String email, String password) {
         Context context = getApplicationContext();
+        final ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Iniciando sesión, por favor espere");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+        progress.show();
+
         String url = "https://app.inin.global/api/user/login";
         JSONObject jsonBody = new JSONObject();
 
@@ -65,18 +77,41 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Context context = getApplicationContext();
-                        Toast toast = Toast.makeText(context, response.toString(), Toast.LENGTH_SHORT);
-                        toast.show();
+                        Gson gson = new Gson();
+                        LoginResponse loginResponse = gson.fromJson(response.toString(), LoginResponse.class);
+                        if(loginResponse.getSuccess())
+                        {
+                            progress.dismiss();
+                            UserData.Instance().setToken(loginResponse.getData().getToken());
+                            UserData.Instance().setAlphanumericId(loginResponse.getData().getAlphanumericId());
+                            UserData.Instance().setCountryId(loginResponse.getData().getCountryId());
+                            UserData.Instance().setEmail(loginResponse.getData().getEmail());
+                            UserData.Instance().setFirstName(loginResponse.getData().getFirstName());
+                            UserData.Instance().setId(loginResponse.getData().getId());
+                            UserData.Instance().setLastName(loginResponse.getData().getLastName());
+                            UserData.Instance().setPassOk(loginResponse.getData().getPassOk());
+                            UserData.Instance().setImage(loginResponse.getData().getImage());
 
-                        
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            progress.dismiss();
+                            Toast toast = Toast.makeText(context, "Inicio de sesión, no exitoso", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+
+
+
 
                     }
                 }, new Response.ErrorListener() {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progress.dismiss();
                         Context context = getApplicationContext();
-                        Toast toast = Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(context, "Credenciales invalidas", Toast.LENGTH_SHORT);
                         toast.show();
                         // TODO Auto-generated method stub
 
