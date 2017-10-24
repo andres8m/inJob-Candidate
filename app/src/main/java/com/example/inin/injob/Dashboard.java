@@ -1,5 +1,6 @@
 package com.example.inin.injob;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
+import com.squareup.picasso.Picasso;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,14 +30,6 @@ public class Dashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-//        Intent i = getIntent();
-//        LoginResponse loginResponse = (LoginResponse) i.getSerializableExtra("loginResponse");
-//
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +55,12 @@ public class Dashboard extends AppCompatActivity
         userName.setText(UserData.Instance().getFirstName() +" "+ UserData.Instance().getLastName());
         TextView userEmail = (TextView) headerView.findViewById(R.id.textemail);;
         userEmail.setText(UserData.Instance().getEmail());
+
+        ImageView imageView = (ImageView) headerView.findViewById(R.id.imageView2);
+        Context context = getApplicationContext();
+        Picasso.with(context).load("https://s3.amazonaws.com/rrhh-images/user/image/"+UserData.Instance().getImage()).into(imageView);
+
+
     }
 
     @Override
