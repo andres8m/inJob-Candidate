@@ -5,4 +5,9 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_psychometric_tests">PsychometricTests</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Para iniciar el proceso, solo debes llenar tu CV, adjuntar una foto de tus documentos. DPI, Antecedentes penales y policíacos.
+Una vez termines de llenar tu CV se enviará a tu correo un link para que te puedas hacer las pruebas psicométricas.</string>
 </resources>
