@@ -8,12 +8,22 @@
     tools:context="com.example.inin.injob.Dashboard"
     tools:showIn="@layout/app_bar_dashboard">
 
-    <fragment
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/asdf"
-        android:name="com.example.inin.injob.MainFragment"
-        tools:layout="@layout/fragment_main">
-    </fragment>
+        android:layout_height="match_parent"
+        android:id="@+id/principal_container">
+
+
+
+    </RelativeLayout>
+
+    <!--<fragment-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/main_card"-->
+        <!--android:name="com.example.inin.injob.MainFragment"-->
+        <!--tools:layout="@layout/fragment_main">-->
+    <!--</fragment>-->
 
 </android.support.constraint.ConstraintLayout>

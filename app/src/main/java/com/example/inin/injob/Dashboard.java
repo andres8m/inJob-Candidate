@@ -1,5 +1,8 @@
 package com.example.inin.injob;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,12 +27,17 @@ import com.squareup.picasso.Picasso;
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +67,12 @@ public class Dashboard extends AppCompatActivity
         ImageView imageView = (ImageView) headerView.findViewById(R.id.imageView2);
         Context context = getApplicationContext();
         Picasso.with(context).load("https://s3.amazonaws.com/rrhh-images/user/image/"+UserData.Instance().getImage()).into(imageView);
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.principal_container, new MainFragment());
+        transaction.commit();
+
+
 
 
     }
@@ -101,8 +115,18 @@ public class Dashboard extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+
+
+
+//        fragments[0] = new MainFragment();
+
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            transaction.replace(R.id.principal_container, new MainFragment());
+            transaction.commit();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
