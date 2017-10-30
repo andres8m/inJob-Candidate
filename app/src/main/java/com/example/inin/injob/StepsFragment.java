@@ -85,12 +85,7 @@ public class StepsFragment extends Fragment {
 //        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
 //        transaction.replace(R.id.child_fragment_container, childFragment).commit();
 
-
-
-
-
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) view.findViewById(R.id.containercv);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -99,9 +94,6 @@ public class StepsFragment extends Fragment {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
-
-
     }
 
 }

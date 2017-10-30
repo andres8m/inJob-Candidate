@@ -1,7 +1,7 @@
 package com.example.inin.injob.models;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+
+import com.example.inin.injob.models.cv1.Cv1UserData;
 
 /**
  * Created by Andres Canu on 24/10/2017.
@@ -29,6 +29,16 @@ public class UserData {
     private String image;
 
     private Boolean passOk;
+
+    public Cv1UserData getCv1() {
+        return cv1;
+    }
+
+    public void setCv1(Cv1UserData cv1) {
+        this.cv1 = cv1;
+    }
+
+    private Cv1UserData cv1;
 
 
     private UserData() {}
