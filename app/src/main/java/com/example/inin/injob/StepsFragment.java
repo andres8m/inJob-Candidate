@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.inin.injob.cv.AcademicExp;
 import com.example.inin.injob.cv.JobInterest;
 import com.example.inin.injob.cv.PersonalInfo;
 import com.example.inin.injob.cv.ProfessionalExp;
@@ -70,6 +71,10 @@ public class StepsFragment extends Fragment {
                     ProfessionalExp cv3 = new ProfessionalExp();
                     return cv3;
 
+                case 3:
+                    AcademicExp cv4 = new AcademicExp();
+                    return cv4;
+
                 default:
                     MainFragment mainFragment3 = new MainFragment();
                     return mainFragment3;
@@ -81,7 +86,7 @@ public class StepsFragment extends Fragment {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 7;
         }
     }
 
