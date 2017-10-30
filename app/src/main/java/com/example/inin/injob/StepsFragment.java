@@ -94,6 +94,18 @@ public class StepsFragment extends Fragment {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+
+
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Datos guardados exitosamente!", Snackbar.LENGTH_LONG)
+                        .setAction("Continua en el siguiente paso", null).show();
+            }
+        });
+
     }
 
 }
