@@ -18,10 +18,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.inin.injob.cv.AcademicExp;
+import com.example.inin.injob.cv.ExtraInfo;
 import com.example.inin.injob.cv.JobInterest;
 import com.example.inin.injob.cv.Languages;
 import com.example.inin.injob.cv.PersonalInfo;
 import com.example.inin.injob.cv.ProfessionalExp;
+import com.example.inin.injob.cv.References;
 
 
 /**
@@ -79,6 +81,14 @@ public class StepsFragment extends Fragment {
                 case 4:
                     Languages cv5 = new Languages();
                     return cv5;
+
+                case 5:
+                    ExtraInfo cv6 = new ExtraInfo();
+                    return cv6;
+
+                case 6:
+                    References cv7 = new References();
+                    return cv7;
 
                 default:
                     MainFragment mainFragment3 = new MainFragment();
