@@ -31,6 +31,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.example.inin.injob.jobs.Jobs;
 import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv1.Cv1UserData;
@@ -149,10 +150,9 @@ public class Dashboard extends AppCompatActivity
             transaction.commit();
         } else if (id == R.id.nav_cv) {
             getCV();
-
-
         } else if (id == R.id.nav_jobs) {
-
+            transaction.replace(R.id.principal_container, new Jobs());
+            transaction.commit();
         } else if (id == R.id.nav_tests) {
             Intent intent = new Intent(this,PsychometricTests.class);
             startActivity(intent);
