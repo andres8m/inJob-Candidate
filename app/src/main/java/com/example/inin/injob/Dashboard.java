@@ -123,11 +123,13 @@ public class Dashboard extends AppCompatActivity
 
 //        fragments[0] = new MainFragment();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
             transaction.replace(R.id.principal_container, new MainFragment());
             transaction.commit();
         } else if (id == R.id.nav_gallery) {
+            transaction.replace(R.id.principal_container, new StepsFragment());
+            transaction.commit();
 
         } else if (id == R.id.nav_slideshow) {
 
