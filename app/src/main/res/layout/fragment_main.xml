@@ -5,48 +5,195 @@
     tools:context="com.example.inin.injob.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/person_photo"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/injob_logo" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/person_name"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:id="@+id/person_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="75dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/injob_logo" />
+
+                    <TextView
+                        android:id="@+id/person_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/person_photo"
+                        android:layout_marginTop="24dp"
+                        android:text="Bienvenido a inJob!"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/person_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/person_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="36dp"
+                        android:text="@string/hello_blank_fragment"
+                        android:textAlignment="center" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/person_photo"
-                android:layout_marginTop="24dp"
-                android:text="Bienvenido a inJob!"
-                android:textAlignment="center"
-                android:textSize="30sp" />
+                android:layout_marginTop="20dp">
 
-            <TextView
-                android:id="@+id/person_age"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/person_photo"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--android:layout_alignParentStart="true"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:src="@drawable/injob_logo" />-->
+
+                    <TextView
+                        android:id="@+id/person_name2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:layout_marginTop="24dp"
+                        android:text="PRUEBAS PSICOMÉTRICAS"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/person_age2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/person_name2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="36dp"
+                        android:text="Completa tus pruebas pscicometricas"
+                        android:textAlignment="center" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/person_name"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="36dp"
-                android:text="@string/hello_blank_fragment"
-                android:textAlignment="center" />
+                android:layout_marginTop="20dp">
 
-        </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
 
-    </android.support.v7.widget.CardView>
+                    <!--<ImageView-->
+                    <!--android:id="@+id/person_photo"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--android:layout_alignParentStart="true"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:src="@drawable/injob_logo" />-->
+
+                    <TextView
+                        android:id="@+id/person_name3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:layout_marginTop="24dp"
+                        android:text="OFERTAS DE EMPLEO"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/person_age3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/person_name3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="36dp"
+                        android:text="Revisa las ofertas de empleo que se han publicado"
+                        android:textAlignment="center" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <!--<ImageView-->
+                    <!--android:id="@+id/person_photo"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--android:layout_alignParentStart="true"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:src="@drawable/injob_logo" />-->
+
+                    <TextView
+                        android:id="@+id/person_name4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+
+                        android:layout_marginTop="24dp"
+                        android:text="DESCARGA TU CV"
+                        android:textAlignment="center"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/person_age4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/person_name4"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="36dp"
+                        android:text="Descarga la información de tu CV en un formato profesional"
+                        android:textAlignment="center" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <!--<android.support.v7.widget.CardView-->
         <!--android:id="@+id/cv2"-->
