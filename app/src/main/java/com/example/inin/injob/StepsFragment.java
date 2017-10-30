@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.inin.injob.cv.PersonalInfo;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,8 +57,8 @@ public class StepsFragment extends Fragment {
 
             switch (position){
                 case 0:
-                    MainFragment mainFragment = new MainFragment();
-                    return mainFragment;
+                    PersonalInfo cv1 = new PersonalInfo();
+                    return cv1;
 
                 case 1:
                     MainFragment mainFragment2 = new MainFragment();

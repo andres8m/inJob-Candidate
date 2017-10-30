@@ -12,7 +12,7 @@
 Una vez termines de llenar tu CV se enviará a tu correo un link para que te puedas hacer las pruebas psicométricas.</string>
     <string name="tab_text_1">Datos Personales
     </string>
-        <string name="tab_text_2">Intereses Laborales
+    <string name="tab_text_2">Intereses Laborales
     </string>
     <string name="tab_text_3">Experiencia Profesional
     </string>
@@ -24,4 +24,8 @@ Una vez termines de llenar tu CV se enviará a tu correo un link para que te pue
     </string>
     <string name="tab_text_7">Referencias
     </string>
+
+    <string name="cv1_desc">Ingresa tus Datos personales y de contacto, incluida una fotografía
+    </string>
+
 </resources>
