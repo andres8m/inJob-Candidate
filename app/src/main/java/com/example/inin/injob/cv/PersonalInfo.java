@@ -10,8 +10,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,6 +33,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,7 +46,14 @@ public class PersonalInfo extends Fragment {
 //    Toast toast = Toast.makeText(context, "Exito", Toast.LENGTH_SHORT);
 
 
+    private String[] arraySpinnerGenero;
 
+    private String[] arraySpinnerNacionalidades;
+
+    private String[] arraySpinnerLicencia;
+
+    private String[] arraySpinnerVisa;
+    private String [] arraySpinnerCountry;
 
     public PersonalInfo() {
         // Required empty public constructor
@@ -59,6 +70,18 @@ public class PersonalInfo extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
+
+        this.arraySpinnerNacionalidades = new String[]{"Guatemalteca", "Mexicana", "Salvadoreña", "Hondureña", "Nicaraguense", "Costaricense",
+                "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
+        "Cubana", "Brasileña","Argentina","Venezolana","Chilena","China","Taiwanesa","Japonesa","Boliviana"};
+
+        this.arraySpinnerLicencia = new String[]{"(C) Liviana", "(B) Comercial", "(A) Profesional", "(M) Motocicleta", "(E) Maquinaria Agrícola"};
+
+        this.arraySpinnerVisa = new String[]{"Si", "No"};
+
+        this.arraySpinnerCountry = new String[]{"Guatemala"};
+
+
 
         EditText editTextName = view.findViewById(R.id.editTextName);
         editTextName.setText(UserData.Instance().getCv1().getNombre());
@@ -80,6 +103,60 @@ public class PersonalInfo extends Fragment {
 
         EditText editTextZona = view.findViewById(R.id.editTextZona);
         editTextZona.setText(UserData.Instance().getCv1().getZona());
+
+
+        Date date = new Date(UserData.Instance().getCv1().getNacimiento());
+        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
+        String dateText = df2.format(date);
+        EditText editTextNac = view.findViewById(R.id.birthday);
+        editTextNac.setText(dateText);
+
+                if(UserData.Instance().getCv1().getGenero().equals("M")){
+                    this.arraySpinnerGenero = new String[] { "Masculino", "Femenio"};
+                }
+                else
+                {
+                    this.arraySpinnerGenero = new String[] { "Femenio", "Masculino"};
+                }
+
+        Spinner s = (Spinner) view.findViewById(R.id.generos);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, arraySpinnerGenero);
+        s.setAdapter(adapter);
+
+        Spinner s2 = (Spinner) view.findViewById(R.id.nacionalidad);
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
+        s2.setAdapter(adapter2);
+        s2.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
+
+        Spinner s3 = (Spinner) view.findViewById(R.id.licencia);
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, arraySpinnerLicencia);
+        s3.setAdapter(adapter3);
+//        s3.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
+
+        Spinner s4 = (Spinner) view.findViewById(R.id.visa);
+        ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, arraySpinnerVisa);
+        s4.setAdapter(adapter4);
+
+        if(UserData.Instance().getCv1().getVisa())
+        {s4.setSelection(0);}
+        else {
+            s4.setSelection(1);
+        }
+
+        Spinner s5 = (Spinner) view.findViewById(R.id.pais);
+        Spinner s6 = (Spinner) view.findViewById(R.id.departamento);
+        Spinner s7 = (Spinner) view.findViewById(R.id.municipio);
+        ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this.getActivity(),
+                android.R.layout.simple_spinner_item, arraySpinnerCountry);
+        s5.setAdapter(adapter5);
+        s6.setAdapter(adapter5);
+        s7.setAdapter(adapter5);
+
+
 
 
     }

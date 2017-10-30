@@ -67,7 +67,8 @@ public class Data implements Serializable
     private Long municipio;
     @SerializedName("nacionalidad")
     @Expose
-    private Long nacionalidad;
+
+    private Integer nacionalidad;
 
     private final static long serialVersionUID = -797541353171941056L;
 
@@ -101,7 +102,7 @@ public class Data implements Serializable
      * @param nacionalidad
      * @param celular
      */
-    public Data(String nombre, String apellido, String direccion, String zona, String celular, String telefono, String genero, Long nacimiento, String licencia, Boolean visa, String foto, Boolean policiacos, Boolean penales, Boolean documento, Long usuario, String identificacion, Long pais, Long departamento, Long municipio, Long nacionalidad) {
+    public Data(String nombre, String apellido, String direccion, String zona, String celular, String telefono, String genero, Long nacimiento, String licencia, Boolean visa, String foto, Boolean policiacos, Boolean penales, Boolean documento, Long usuario, String identificacion, Long pais, Long departamento, Long municipio, Integer nacionalidad) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
@@ -277,11 +278,11 @@ public class Data implements Serializable
         this.municipio = municipio;
     }
 
-    public Long getNacionalidad() {
+    public Integer getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setNacionalidad(Long nacionalidad) {
+    public void setNacionalidad(Integer nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 

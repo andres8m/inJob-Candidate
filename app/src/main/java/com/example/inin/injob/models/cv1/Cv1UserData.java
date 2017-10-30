@@ -45,7 +45,7 @@ public class Cv1UserData {
 
     private Long municipio;
 
-    private Long nacionalidad;
+    private Integer nacionalidad;
 
 //    public Cv1UserData() {}
 
@@ -215,11 +215,11 @@ public class Cv1UserData {
         this.municipio = municipio;
     }
 
-    public Long getNacionalidad() {
+    public Integer getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setNacionalidad(Long nacionalidad) {
+    public void setNacionalidad(Integer nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 
