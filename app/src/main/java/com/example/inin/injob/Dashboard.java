@@ -1,13 +1,18 @@
 package com.example.inin.injob;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+//import android.app.FragmentManager;
+//import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -67,10 +72,11 @@ public class Dashboard extends AppCompatActivity
         ImageView imageView = (ImageView) headerView.findViewById(R.id.imageView2);
         Context context = getApplicationContext();
         Picasso.with(context).load("https://s3.amazonaws.com/rrhh-images/user/image/"+UserData.Instance().getImage()).into(imageView);
-        FragmentManager manager = getFragmentManager();
+        FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.principal_container, new MainFragment());
         transaction.commit();
+
 
 
 
@@ -116,7 +122,7 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
 
-        FragmentManager manager = getFragmentManager();
+        FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
 
@@ -127,13 +133,13 @@ public class Dashboard extends AppCompatActivity
             // Handle the camera action
             transaction.replace(R.id.principal_container, new MainFragment());
             transaction.commit();
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_cv) {
             transaction.replace(R.id.principal_container, new StepsFragment());
             transaction.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_jobs) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_tests) {
             Intent intent = new Intent(this,PsychometricTests.class);
             startActivity(intent);
 
@@ -147,4 +153,8 @@ public class Dashboard extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+
 }

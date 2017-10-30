@@ -7,15 +7,15 @@
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Inicio" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_cv"
             android:icon="@drawable/ic_library_books_black_24dp"
             android:title="Curriculum" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_jobs"
             android:icon="@drawable/ic_work_black_24dp"
             android:title="Ofertas de Empleo" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_tests"
             android:icon="@drawable/ic_supervisor_account_black_24dp"
             android:title="Pruebas Psicometricas" />
     </group>
