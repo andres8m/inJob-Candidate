@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv1.Cv1UserData;
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -156,7 +158,15 @@ public class PersonalInfo extends Fragment {
         s6.setAdapter(adapter5);
         s7.setAdapter(adapter5);
 
-
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView2);
+        Context context = getActivity();
+        if(UserData.Instance().getCv1().getFoto()!=null)
+        {
+            Picasso.with(context).load("https://s3.amazonaws.com/rrhh-images/cv/photo/"+UserData.Instance().getCv1().getFoto()).into(imageView);
+        }
+        else {
+            Picasso.with(context).load("https://www.shareicon.net/data/2016/09/01/822711_user_512x512.png").into(imageView);
+        }
 
 
     }

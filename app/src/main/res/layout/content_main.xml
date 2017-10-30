@@ -69,12 +69,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="100dp"
-                android:linksClickable="false"
-                android:text="Registrate en inin.global"
+                android:clickable="true"
+                android:linksClickable="true"
+                android:text="@string/registerInin"
                 android:textAlignment="center"
                 android:textColorLink="@color/colorAccent"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:autoLink="web"/>
 
 
 
