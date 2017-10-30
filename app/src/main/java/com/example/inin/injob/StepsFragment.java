@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.inin.injob.cv.JobInterest;
 import com.example.inin.injob.cv.PersonalInfo;
+import com.example.inin.injob.cv.ProfessionalExp;
 
 
 /**
@@ -64,6 +65,10 @@ public class StepsFragment extends Fragment {
                 case 1:
                     JobInterest cv2 = new JobInterest();
                     return cv2;
+
+                case 2:
+                    ProfessionalExp cv3 = new ProfessionalExp();
+                    return cv3;
 
                 default:
                     MainFragment mainFragment3 = new MainFragment();
