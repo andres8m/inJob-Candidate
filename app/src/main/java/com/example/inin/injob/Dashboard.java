@@ -36,6 +36,7 @@ import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv1.Cv1UserData;
 import com.example.inin.injob.models.cv1.CvResponse;
+import com.example.inin.injob.tests.Tests;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -154,12 +155,14 @@ public class Dashboard extends AppCompatActivity
             transaction.replace(R.id.principal_container, new Jobs());
             transaction.commit();
         } else if (id == R.id.nav_tests) {
-            Intent intent = new Intent(this,PsychometricTests.class);
-            startActivity(intent);
+            transaction.replace(R.id.principal_container, new Tests());
+            transaction.commit();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_share)
+        {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_send)
+        {
 
         }
 

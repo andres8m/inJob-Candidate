@@ -63,12 +63,12 @@
                     android:layout_margin="10dp">
 
                     <!--<ImageView-->
-                        <!--android:id="@+id/person_photo"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="75dp"-->
-                        <!--android:layout_alignParentStart="true"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:src="@drawable/injob_logo" />-->
+                    <!--android:id="@+id/person_photo"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="75dp"-->
+                    <!--android:layout_alignParentStart="true"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:src="@drawable/injob_logo" />-->
 
                     <TextView
                         android:id="@+id/person_name"
@@ -88,10 +88,17 @@
                         android:layout_below="@+id/person_name"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="36dp"
-                        android:text="Realizar las funciones administrativas inherentes a la función de importación y exportación de mercancías,
-                        además de otras tareas relacionadas con la función de Logística, Tráfico y Transportes."
+                        android:text="Realizar las funciones administrativas inherentes a la función de importación y exportación de mercancías, además de otras tareas relacionadas con la función de Logística, Tráfico y Transportes."
                         android:textAlignment="center" />
 
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/person_age"
+                        android:layout_marginTop="20dp"
+                        android:text="Detalles" />
 
 
                 </RelativeLayout>
@@ -137,6 +144,15 @@
                         android:text="Necesitamos personas que hablen ingles un 85% y que tengan conocimiento en servicio al cliente"
                         android:textAlignment="center" />
 
+
+                    <Button
+                        android:id="@+id/button5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/person_age2"
+                        android:layout_marginTop="20dp"
+                        android:text="Detalles" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
@@ -177,9 +193,18 @@
                         android:layout_below="@+id/person_name3"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="36dp"
-                        android:text="Generar cartera de clientes, visitarlos, ofrecer y vender los servicios de la compañía.
-                        Se ofrece salario base + combustible + comisiones"
+                        android:text="Generar cartera de clientes, visitarlos, ofrecer y vender los servicios de la compañía. Se ofrece salario base + combustible + comisiones"
                         android:textAlignment="center" />
+
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/person_age3"
+                        android:layout_marginTop="20dp"
+                        android:text="Detalles" />
 
                 </RelativeLayout>
 
@@ -223,6 +248,16 @@
                         android:layout_marginTop="36dp"
                         android:text="Conocimientos intermedios de Java Experiencia en Java EE ( no indispensable ) Conocimiento de Bases de Datos ( MySQL ) Web Services Dispuesto a aprender"
                         android:textAlignment="center" />
+
+
+                    <Button
+                        android:id="@+id/button7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/person_age4"
+                        android:layout_marginTop="20dp"
+                        android:text="Detalles" />
 
                 </RelativeLayout>
 
