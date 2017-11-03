@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="10dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/colorLight"
                     android:gravity="center"
                     android:padding="15dp"
                     android:text="Subir Imagen"
@@ -325,15 +325,27 @@
                 android:labelFor="@id/penales"
                 android:text="Antecedentes Penales" />
 
-            <Button
-                android:id="@+id/penales"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimary"
-                android:text="Subir Antecedentes Penales"
-                android:textColor="@android:color/white"
-                android:textColorLink="@android:color/white" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:id="@+id/penales"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorLight"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Subir Imagen"
+                    android:textColor="@android:color/white"
+                    android:textColorLink="@android:color/white" />
+
+            </RelativeLayout>
+
+
 
             <TextView
                 android:id="@+id/textView19"
@@ -343,15 +355,28 @@
                 android:labelFor="@id/penales"
                 android:text="Antecedentes Policacos" />
 
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp">
+
             <Button
                 android:id="@+id/policiacos"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimary"
-                android:text="Subir Antecedentes Policacos"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorLight"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Subir Imagen"
                 android:textColor="@android:color/white"
                 android:textColorLink="@android:color/white" />
+
+        </RelativeLayout>
+
+
+
 
             <TextView
                 android:id="@+id/textView20"
@@ -361,16 +386,28 @@
                 android:labelFor="@id/documento"
                 android:text="Documento de Identificación" />
 
-            <Button
-                android:id="@+id/documento"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="65dp"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorPrimary"
-                android:text="Subir Documento de Identificación"
-                android:textColor="@android:color/white"
-                android:textColorLink="@android:color/white" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="35dp"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:id="@+id/documento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorLight"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Subir Imagen"
+                    android:textColor="@android:color/white"
+                    android:textColorLink="@android:color/white" />
+
+            </RelativeLayout>
+
+
 
         </LinearLayout>
 
