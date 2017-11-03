@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/person_name"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
+                        android:layout_marginTop="25dp"
                         android:text="@string/hello_blank_fragment"
                         android:textAlignment="center" />
 
@@ -83,8 +83,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/person_photo2"
-                        android:layout_marginTop="24dp"
-                        android:text="Pruebas Psicmetricas"
+                        android:layout_marginTop="20dp"
+                        android:text="Pruebas Psicometricas"
                         android:textAlignment="center"
                         android:textSize="30sp" />
 
@@ -94,7 +94,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/person_name2"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
+                        android:layout_marginTop="15dp"
                         android:text="Completa tus pruebas pscicometricas"
                         android:textAlignment="center" />
 
@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/person_photo3"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="20dp"
                         android:text="Ofertas de Empleo"
                         android:textAlignment="center"
                         android:textSize="30sp" />
@@ -138,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/person_name3"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
+                        android:layout_marginTop="15dp"
                         android:text="Revisa las ofertas de empleo que se han publicado"
                         android:textAlignment="center" />
 
@@ -172,7 +172,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_below="@+id/person_photo4"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="20dp"
                         android:text="Descarga tu CV"
                         android:textAlignment="center"
                         android:textSize="30sp" />
@@ -183,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/person_name4"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
+                        android:layout_marginTop="15dp"
                         android:text="Descarga la información de tu CV en un formato profesional"
                         android:textAlignment="center" />
 

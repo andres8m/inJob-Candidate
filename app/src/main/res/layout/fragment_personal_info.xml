@@ -78,10 +78,13 @@
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Subir Imagen" />
+                android:text="Subir Imagen"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                android:textColorLink="@android:color/white"/>
 
 
             <TextView
@@ -312,9 +315,13 @@
 
             <Button
                 android:id="@+id/penales"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Subir Antecedentes Penales" />
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Subir Antecedentes Penales"
+                android:textColor="@android:color/white"
+                android:textColorLink="@android:color/white" />
 
             <TextView
                 android:id="@+id/textView19"
@@ -326,9 +333,13 @@
 
             <Button
                 android:id="@+id/policiacos"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Subir Antecedentes Policacos" />
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Subir Antecedentes Policacos"
+                android:textColor="@android:color/white"
+                android:textColorLink="@android:color/white" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -340,9 +351,14 @@
 
             <Button
                 android:id="@+id/documento"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Subir Documento de Identificación" />
+                android:layout_marginBottom="65dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Subir Documento de Identificación"
+                android:textColor="@android:color/white"
+                android:textColorLink="@android:color/white" />
 
         </LinearLayout>
 
