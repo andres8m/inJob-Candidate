@@ -3,6 +3,7 @@ package com.example.inin.injob;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+        Context context = this;
+        SharedPreferences sharedPreferences = getSharedPreferences("DatFile",context.MODE_PRIVATE);
         final EditText emailTxt = (EditText)findViewById(R.id.editText);
         final EditText passlTxt = (EditText)findViewById(R.id.editText2);
         final Button fab = (Button) findViewById(R.id.button);
@@ -96,7 +99,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
+        SharedPreferences sharespr = getPreferences(context.MODE_PRIVATE);
+        String v1 = sharespr.getString("User","Nothing");
+        String v2 = sharespr.getString("Password","Nothing");
+        if(!v1.equals("Nothing") && !v2.equals("Nothing"))
+        {
+            attemptLogin(v1,v2);
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void attemptLogin(String email, String password) {
+    private void attemptLogin(final String email, final String password) {
         Context context = getApplicationContext();
         final ProgressDialog progress = new ProgressDialog(this);
         progress.setMessage("Iniciando sesión, por favor espere");
@@ -139,6 +148,15 @@ public class MainActivity extends AppCompatActivity {
                         LoginResponse loginResponse = gson.fromJson(response.toString(), LoginResponse.class);
                         if(loginResponse.getSuccess())
                         {
+                            SharedPreferences sharespr = getPreferences(context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharespr.edit();
+                            editor.putString("User", email);
+                            editor.putString("Password", password);
+                            editor.apply();
+                            final Button fab = (Button) findViewById(R.id.button);
+                            fab.setEnabled(true);
+                            fab.getBackground().setAlpha(255);
+
                             progress.dismiss();
                             UserData.Instance().setToken(loginResponse.getData().getToken());
                             UserData.Instance().setAlphanumericId(loginResponse.getData().getAlphanumericId());
