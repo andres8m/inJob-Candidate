@@ -1,8 +1,41 @@
 <resources>
     <string name="app_name">inJob</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="action_settings">Configuracion</string>
+    <string name="title_activity_dashboard">inJob</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_psychometric_tests">Pruebas Psicometricas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Para iniciar el proceso, solo debes llenar tu CV, adjuntar una foto de tus documentos. DPI, Antecedentes penales y policíacos.
+Una vez termines de llenar tu CV se enviará a tu correo un link para que te puedas hacer las pruebas psicométricas.</string>
+    <string name="tab_text_1">Datos Personales
+    </string>
+    <string name="tab_text_2">Intereses Laborales
+    </string>
+    <string name="tab_text_3">Experiencia Profesional
+    </string>
+    <string name="tab_text_4">Experiencia Académica
+    </string>
+    <string name="tab_text_5">Idiomas
+    </string>
+    <string name="tab_text_6">Extras
+    </string>
+    <string name="tab_text_7">Referencias
+    </string>
+
+    <string name="cv1_desc">Ingresa tus Datos personales y de contacto, incluida una fotografía
+    </string>
+
+
+    <string name="cv2_desc">Busca o selecciona hasta 5 puestos a los que te gustaria aplicar.
+    </string>
+
+    <string name="registerInin">
+        <a href="https://www.app.inin.global">
+        Registrate en inin.global
+        </a>
+    </string>
+
 </resources>
