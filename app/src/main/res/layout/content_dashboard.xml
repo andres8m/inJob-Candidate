@@ -10,37 +10,36 @@
 
 
     <RelativeLayout
+        android:id="@+id/principal_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/principal_container">
+        android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/indeterminateBar"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:indeterminate="true"
-            android:padding="25dp" />
 
     </RelativeLayout>
 
+    <ProgressBar
+        android:id="@+id/indeterminateBar"
+        android:layout_width="wrap_content"
 
-
-
-
-
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:padding="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/principal_container"
+        app:layout_constraintEnd_toStartOf="@+id/principal_container"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/principal_container"
+        app:layout_constraintTop_toBottomOf="@+id/principal_container" />
 
 
     <!--<fragment-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/main_card"-->
-        <!--android:name="com.example.inin.injob.MainFragment"-->
-        <!--tools:layout="@layout/fragment_main">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:id="@+id/main_card"-->
+    <!--android:name="com.example.inin.injob.MainFragment"-->
+    <!--tools:layout="@layout/fragment_main">-->
     <!--</fragment>-->
-
 
 
 </android.support.constraint.ConstraintLayout>

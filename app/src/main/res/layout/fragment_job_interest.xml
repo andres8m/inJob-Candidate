@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp">
+        android:layout_margin="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="5dp"
                         android:text="Intereses Laborales"
                         android:textAlignment="center"
                         android:textSize="30sp"
@@ -65,12 +65,18 @@
                 android:labelFor="@+id/interestListView"
                 android:text="Intereses Seleccionados"
                 android:textAlignment="center"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <ListView
                 android:id="@+id/interestListView"
                 android:layout_width="match_parent"
-                android:layout_height="136dp" />
+                android:layout_height="136dp"
+                android:layout_marginTop="10dp"
+                android:choiceMode="multipleChoiceModal"
+                android:footerDividersEnabled="true"
+                android:headerDividersEnabled="true"
+                android:listSelector="@color/colorLight" />
 
             <TextView
                 android:id="@+id/competencias"
@@ -81,12 +87,14 @@
                 android:labelFor="@+id/competenciastListView"
                 android:text="Competencias laborales seleccionadas"
                 android:textAlignment="center"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <ListView
                 android:id="@+id/competenciastListView"
                 android:layout_width="match_parent"
-                android:layout_height="136dp" />
+                android:layout_height="136dp"
+                android:layout_marginTop="10dp" />
 
 
         </LinearLayout>
