@@ -31,41 +31,47 @@ public class Data {
     @SerializedName("image")
     @Expose
     private String image;
-    @SerializedName("canAdminUsers")
-    @Expose
-    private Boolean canAdminUsers;
-    @SerializedName("canAdminCompanies")
-    @Expose
-    private Boolean canAdminCompanies;
-    @SerializedName("seller")
-    @Expose
-    private Boolean seller;
-    @SerializedName("adviser")
-    @Expose
-    private Boolean adviser;
-    @SerializedName("associate")
-    @Expose
-    private Boolean associate;
-    @SerializedName("credit")
-    @Expose
-    private Boolean credit;
-    @SerializedName("directAdviser")
-    @Expose
-    private Boolean directAdviser;
+
+//    @SerializedName("canAdminUsers")
+//    @Expose
+//    private Boolean canAdminUsers;
+//    @SerializedName("canAdminCompanies")
+//    @Expose
+//    private Boolean canAdminCompanies;
+//    @SerializedName("seller")
+//    @Expose
+//    private Boolean seller;
+//    @SerializedName("adviser")
+//    @Expose
+//    private Boolean adviser;
+//    @SerializedName("associate")
+//    @Expose
+//    private Boolean associate;
+
+//    @SerializedName("credit")
+//    @Expose
+//    private Boolean credit;
+//    @SerializedName("directAdviser")
+//    @Expose
+//    private Boolean directAdviser;
+
     @SerializedName("validated")
     @Expose
     private Boolean validated;
-    @SerializedName("balance")
-    @Expose
-    private Integer balance;
-    @SerializedName("currency")
-    @Expose
-    private Integer currency;
+
+//    @SerializedName("balance")
+//    @Expose
+//    private Integer balance;
+//
+//
+//    @SerializedName("currency")
+//    @Expose
+//    private Integer currency;
 
 
-    @SerializedName("companiesReservedBalance")
-    @Expose
-    private Integer companiesReservedBalance;
+//    @SerializedName("companiesReservedBalance")
+//    @Expose
+//    private Integer companiesReservedBalance;
 
 //    @SerializedName("services")
 //    @Expose
@@ -78,6 +84,8 @@ public class Data {
     @SerializedName("passOk")
     @Expose
     private Boolean passOk;
+
+
 
     public String getToken() {
         return token;
@@ -143,61 +151,61 @@ public class Data {
         this.image = image;
     }
 
-    public Boolean getCanAdminUsers() {
-        return canAdminUsers;
-    }
-
-    public void setCanAdminUsers(Boolean canAdminUsers) {
-        this.canAdminUsers = canAdminUsers;
-    }
-
-    public Boolean getCanAdminCompanies() {
-        return canAdminCompanies;
-    }
-
-    public void setCanAdminCompanies(Boolean canAdminCompanies) {
-        this.canAdminCompanies = canAdminCompanies;
-    }
-
-    public Boolean getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Boolean seller) {
-        this.seller = seller;
-    }
-
-    public Boolean getAdviser() {
-        return adviser;
-    }
-
-    public void setAdviser(Boolean adviser) {
-        this.adviser = adviser;
-    }
-
-    public Boolean getAssociate() {
-        return associate;
-    }
-
-    public void setAssociate(Boolean associate) {
-        this.associate = associate;
-    }
-
-    public Boolean getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Boolean credit) {
-        this.credit = credit;
-    }
-
-    public Boolean getDirectAdviser() {
-        return directAdviser;
-    }
-
-    public void setDirectAdviser(Boolean directAdviser) {
-        this.directAdviser = directAdviser;
-    }
+//    public Boolean getCanAdminUsers() {
+//        return canAdminUsers;
+//    }
+//
+//    public void setCanAdminUsers(Boolean canAdminUsers) {
+//        this.canAdminUsers = canAdminUsers;
+//    }
+//
+//    public Boolean getCanAdminCompanies() {
+//        return canAdminCompanies;
+//    }
+//
+//    public void setCanAdminCompanies(Boolean canAdminCompanies) {
+//        this.canAdminCompanies = canAdminCompanies;
+//    }
+//
+//    public Boolean getSeller() {
+//        return seller;
+//    }
+//
+//    public void setSeller(Boolean seller) {
+//        this.seller = seller;
+//    }
+//
+//    public Boolean getAdviser() {
+//        return adviser;
+//    }
+//
+//    public void setAdviser(Boolean adviser) {
+//        this.adviser = adviser;
+//    }
+//
+//    public Boolean getAssociate() {
+//        return associate;
+//    }
+//
+//    public void setAssociate(Boolean associate) {
+//        this.associate = associate;
+//    }
+//
+//    public Boolean getCredit() {
+//        return credit;
+//    }
+//
+//    public void setCredit(Boolean credit) {
+//        this.credit = credit;
+//    }
+//
+//    public Boolean getDirectAdviser() {
+//        return directAdviser;
+//    }
+//
+//    public void setDirectAdviser(Boolean directAdviser) {
+//        this.directAdviser = directAdviser;
+//    }
 
     public Boolean getValidated() {
         return validated;
@@ -207,29 +215,29 @@ public class Data {
         this.validated = validated;
     }
 
-    public Integer getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Integer balance) {
-        this.balance = balance;
-    }
-
-    public Integer getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(Integer currency) {
-        this.currency = currency;
-    }
-
-    public Integer getCompaniesReservedBalance() {
-        return companiesReservedBalance;
-    }
-
-    public void setCompaniesReservedBalance(Integer companiesReservedBalance) {
-        this.companiesReservedBalance = companiesReservedBalance;
-    }
+//    public Integer getBalance() {
+//        return balance;
+//    }
+//
+//    public void setBalance(Integer balance) {
+//        this.balance = balance;
+//    }
+//
+//    public Integer getCurrency() {
+//        return currency;
+//    }
+//
+//    public void setCurrency(Integer currency) {
+//        this.currency = currency;
+//    }
+//
+//    public Integer getCompaniesReservedBalance() {
+//        return companiesReservedBalance;
+//    }
+//
+//    public void setCompaniesReservedBalance(Integer companiesReservedBalance) {
+//        this.companiesReservedBalance = companiesReservedBalance;
+//    }
 
 //    public List<Service> getServices() {
 //        return services;

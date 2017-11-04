@@ -2,6 +2,7 @@ package com.example.inin.injob.models;
 
 
 import com.example.inin.injob.models.cv1.Cv1UserData;
+import com.example.inin.injob.models.cv2.Cv2UserData;
 
 /**
  * Created by Andres Canu on 24/10/2017.
@@ -32,6 +33,16 @@ public class UserData {
 
     public Cv1UserData getCv1() {
         return cv1;
+    }
+
+    public Cv2UserData cv2;
+
+    public Cv2UserData getCv2() {
+        return cv2;
+    }
+
+    public void setCv2(Cv2UserData cv2) {
+        this.cv2 = cv2;
     }
 
     public void setCv1(Cv1UserData cv1) {
