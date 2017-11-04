@@ -111,20 +111,29 @@ public class PersonalInfo extends Fragment {
         EditText editTextZona = view.findViewById(R.id.editTextZona);
         editTextZona.setText(UserData.Instance().getCv1().getZona());
 
+        if(UserData.Instance().getCv1().getNacimiento()!=null)
+        {
+            Date date = new Date(UserData.Instance().getCv1().getNacimiento());
+            SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
+            String dateText = df2.format(date);
+            EditText editTextNac = view.findViewById(R.id.birthday);
+            editTextNac.setText(dateText);
+        }
 
-        Date date = new Date(UserData.Instance().getCv1().getNacimiento());
-        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
-        String dateText = df2.format(date);
-        EditText editTextNac = view.findViewById(R.id.birthday);
-        editTextNac.setText(dateText);
+        if(UserData.Instance().getCv1().getGenero()!=null)
+        {
+            if(UserData.Instance().getCv1().getGenero().equals("H")){
+                this.arraySpinnerGenero = new String[] { "Masculino", "Femenino"};
+            }
+            else
+            {
+                this.arraySpinnerGenero = new String[] { "Femenino", "Masculino"};
+            }
+        }
+        else {
+            this.arraySpinnerGenero = new String[] { "Masculino", "Femenino"};
+        }
 
-                if(UserData.Instance().getCv1().getGenero().equals("M")){
-                    this.arraySpinnerGenero = new String[] { "Masculino", "Femenio"};
-                }
-                else
-                {
-                    this.arraySpinnerGenero = new String[] { "Femenio", "Masculino"};
-                }
 
         Spinner s = (Spinner) view.findViewById(R.id.generos);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
@@ -135,7 +144,10 @@ public class PersonalInfo extends Fragment {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
                 android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
         s2.setAdapter(adapter2);
-        s2.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
+        if(UserData.Instance().getCv1().getNacionalidad()!=null)
+        {
+            s2.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
+        }
 
         Spinner s3 = (Spinner) view.findViewById(R.id.licencia);
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
@@ -148,11 +160,19 @@ public class PersonalInfo extends Fragment {
                 android.R.layout.simple_spinner_item, arraySpinnerVisa);
         s4.setAdapter(adapter4);
 
-        if(UserData.Instance().getCv1().getVisa())
-        {s4.setSelection(0);}
+        if(UserData.Instance().getCv1().getVisa()!=null)
+        {
+            if(UserData.Instance().getCv1().getVisa() )
+            {s4.setSelection(0);
+            }
+            else {
+                s4.setSelection(1);
+            }
+        }
         else {
             s4.setSelection(1);
         }
+
 
         Spinner s5 = (Spinner) view.findViewById(R.id.pais);
         Spinner s6 = (Spinner) view.findViewById(R.id.departamento);
