@@ -1,11 +1,12 @@
 
-package com.example.inin.injob.models.cv1;
+package com.example.inin.injob.models.cv3;
 
 import java.io.Serializable;
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class CvResponse implements Serializable
+public class Cv3Response implements Serializable
 {
 
     @SerializedName("success")
@@ -18,16 +19,15 @@ public class CvResponse implements Serializable
 
     @SerializedName("data")
     @Expose
-    private Data data;
+    private List<DatumCv3> data;
 
-
-    private final static long serialVersionUID = -9191474806409885869L;
+    private final static long serialVersionUID = -2476107829659765986L;
 
     /**
      * No args constructor for use in serialization
      * 
      */
-    public CvResponse() {
+    public Cv3Response() {
     }
 
     /**
@@ -36,7 +36,7 @@ public class CvResponse implements Serializable
      * @param data
      * @param success
      */
-    public CvResponse(Boolean success, String message, Data data) {
+    public Cv3Response(Boolean success, String message, List<DatumCv3> data) {
         super();
         this.success = success;
         this.message = message;
@@ -59,11 +59,11 @@ public class CvResponse implements Serializable
         this.message = message;
     }
 
-    public Data getData() {
+    public List<DatumCv3> getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(List<DatumCv3> data) {
         this.data = data;
     }
 

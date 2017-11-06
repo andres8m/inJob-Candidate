@@ -8,17 +8,17 @@ import java.util.List;
 
 public class Cv2UserData {
 
-    private List<Datum> interests;
+    private List<DatumCv2> interests;
 
     public Cv2UserData() {
 
     }
 
-    public List<Datum> getInterests() {
+    public List<DatumCv2> getInterests() {
         return interests;
     }
 
-    public void setInterests(List<Datum> interests) {
+    public void setInterests(List<DatumCv2> interests) {
         this.interests = interests;
     }
 }

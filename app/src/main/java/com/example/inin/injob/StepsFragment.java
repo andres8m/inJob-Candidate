@@ -23,6 +23,7 @@ import com.example.inin.injob.cv.JobInterest;
 import com.example.inin.injob.cv.Languages;
 import com.example.inin.injob.cv.PersonalInfo;
 import com.example.inin.injob.cv.ProfessionalExp;
+import com.example.inin.injob.cv.ProfessionalExperienceList;
 import com.example.inin.injob.cv.References;
 
 
@@ -71,7 +72,7 @@ public class StepsFragment extends Fragment {
                     return cv2;
 
                 case 2:
-                    ProfessionalExp cv3 = new ProfessionalExp();
+                    ProfessionalExperienceList cv3 = new ProfessionalExperienceList();
                     return cv3;
 
                 case 3:

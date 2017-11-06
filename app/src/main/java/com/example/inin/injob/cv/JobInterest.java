@@ -22,7 +22,7 @@ import com.example.inin.injob.R;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv2.Cv2Response;
 import com.example.inin.injob.models.cv2.Cv2UserData;
-import com.example.inin.injob.models.cv2.Datum;
+import com.example.inin.injob.models.cv2.DatumCv2;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -57,7 +57,7 @@ public class JobInterest extends Fragment {
             List<String> interests = new ArrayList<>();
             SearchView searchView = getView().findViewById(R.id.searchTxt);
 
-            for(Datum x :  UserData.Instance().getCv2().getInterests())
+            for(DatumCv2 x :  UserData.Instance().getCv2().getInterests())
             {
              interests.add(x.getName());
             }

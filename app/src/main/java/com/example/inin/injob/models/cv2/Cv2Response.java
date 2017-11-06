@@ -17,7 +17,7 @@ public class Cv2Response implements Serializable
     private String message;
     @SerializedName("data")
     @Expose
-    private List<Datum> data = null;
+    private List<DatumCv2> data = null;
     private final static long serialVersionUID = 3461048155189812212L;
 
     /**
@@ -33,7 +33,7 @@ public class Cv2Response implements Serializable
      * @param data
      * @param success
      */
-    public Cv2Response(Boolean success, String message, List<Datum> data) {
+    public Cv2Response(Boolean success, String message, List<DatumCv2> data) {
         super();
         this.success = success;
         this.message = message;
@@ -56,11 +56,11 @@ public class Cv2Response implements Serializable
         this.message = message;
     }
 
-    public List<Datum> getData() {
+    public List<DatumCv2> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<DatumCv2> data) {
         this.data = data;
     }
 

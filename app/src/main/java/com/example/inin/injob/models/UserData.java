@@ -1,8 +1,11 @@
 package com.example.inin.injob.models;
 
 
-import com.example.inin.injob.models.cv1.Cv1UserData;
+import com.example.inin.injob.models.cv1.Data;
 import com.example.inin.injob.models.cv2.Cv2UserData;
+import com.example.inin.injob.models.cv3.DatumCv3;
+
+import java.util.List;
 
 /**
  * Created by Andres Canu on 24/10/2017.
@@ -31,9 +34,9 @@ public class UserData {
 
     private Boolean passOk;
 
-    public Cv1UserData getCv1() {
-        return cv1;
-    }
+//    public Cv1UserData getCv1() {
+//        return cv1;
+//    }
 
     public Cv2UserData cv2;
 
@@ -45,12 +48,40 @@ public class UserData {
         this.cv2 = cv2;
     }
 
-    public void setCv1(Cv1UserData cv1) {
+//    public void setCv1(Cv1UserData cv1) {
+//        this.cv1 = cv1;
+//    }
+
+
+    private List<DatumCv3> cv3;
+
+    public List<DatumCv3> getCv3() {
+        return cv3;
+    }
+
+    public void setCv3(List<DatumCv3> cv3) {
+        this.cv3 = cv3;
+    }
+
+    public UserData(List<DatumCv3> cv3) {
+        this.cv3 = cv3;
+    }
+
+    private com.example.inin.injob.models.cv1.Data cv1;
+
+    public Data getCv1() {
+        return cv1;
+    }
+
+    public void setCv1(Data cv1) {
         this.cv1 = cv1;
     }
 
-    private Cv1UserData cv1;
 
+
+    public UserData(Data cv1) {
+        this.cv1 = cv1;
+    }
 
     private UserData() {}
 

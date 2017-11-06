@@ -14,6 +14,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -32,6 +34,10 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
+//    private static final String[] COUNTRIES = new String[] {
+//            "Belgium", "France", "Italy", "Germany", "Spain"
+//    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +46,18 @@ public class MainActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
         Context context = this;
         SharedPreferences sharedPreferences = getSharedPreferences("DatFile",context.MODE_PRIVATE);
-        final EditText emailTxt = (EditText)findViewById(R.id.editText);
+        final AutoCompleteTextView emailTxt = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
         final EditText passlTxt = (EditText)findViewById(R.id.editText2);
         final Button fab = (Button) findViewById(R.id.button);
         fab.setEnabled(false);
         fab.getBackground().setAlpha(100);
 
 
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+//        AutoCompleteTextView textView = (AutoCompleteTextView)
+//                findViewById(R.id.autoCompleteTextView);
+//        textView.setAdapter(adapter);
 
 
         emailTxt.addTextChangedListener(new TextWatcher() {
@@ -153,6 +164,9 @@ public class MainActivity extends AppCompatActivity {
                             editor.putString("User", email);
                             editor.putString("Password", password);
                             editor.apply();
+
+
+
                             final Button fab = (Button) findViewById(R.id.button);
                             fab.setEnabled(true);
                             fab.getBackground().setAlpha(255);

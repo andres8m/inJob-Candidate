@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Datum implements Serializable
+public class DatumCv2 implements Serializable
 {
 
     @SerializedName("id")
@@ -26,7 +26,7 @@ public class Datum implements Serializable
      * No args constructor for use in serialization
      * 
      */
-    public Datum() {
+    public DatumCv2() {
     }
 
     /**
@@ -36,7 +36,7 @@ public class Datum implements Serializable
      * @param job
      * @param curriculum
      */
-    public Datum(Integer id, Integer curriculum, Integer job, String name) {
+    public DatumCv2(Integer id, Integer curriculum, Integer job, String name) {
         super();
         this.id = id;
         this.curriculum = curriculum;
