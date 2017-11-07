@@ -1,4 +1,4 @@
-package com.example.inin.injob.cv;
+package com.example.inin.injob.cv.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

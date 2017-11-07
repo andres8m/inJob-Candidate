@@ -4,6 +4,7 @@ package com.example.inin.injob.models;
 import com.example.inin.injob.models.cv1.Data;
 import com.example.inin.injob.models.cv2.Cv2UserData;
 import com.example.inin.injob.models.cv3.DatumCv3;
+import com.example.inin.injob.models.jobs.DatumJobs;
 
 import java.util.List;
 
@@ -34,7 +35,18 @@ public class UserData {
 
     private Boolean passOk;
 
-//    public Cv1UserData getCv1() {
+    private List<DatumJobs> jobs;
+
+    public List<DatumJobs> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<DatumJobs> jobs) {
+        this.jobs = jobs;
+    }
+
+
+    //    public Cv1UserData getCv1() {
 //        return cv1;
 //    }
 

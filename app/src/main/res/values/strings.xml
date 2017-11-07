@@ -35,6 +35,9 @@ Una vez termines de llenar tu CV se enviará a tu correo un link para que te pue
     <string name="upload_image">Subir imagen
     </string>
 
+    <string name="details">Detalles
+    </string>
+
     <string name="registerInin">
         <a href="https://www.app.inin.global">
         Registrate en inin.global

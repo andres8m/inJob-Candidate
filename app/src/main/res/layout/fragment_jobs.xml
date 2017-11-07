@@ -5,27 +5,26 @@
     tools:context="com.example.inin.injob.jobs.Jobs">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:orientation="vertical">
 
-        <LinearLayout
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/mainCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/mainCard"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <ImageView
+                <ImageView
                     android:id="@+id/person_photo"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
@@ -33,237 +32,30 @@
                     android:layout_alignParentTop="true"
                     android:src="@drawable/injob_logo" />
 
-                    <TextView
-                        android:id="@+id/mainLogo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/person_photo"
-                        android:layout_marginTop="24dp"
-                        android:text="Ofertas Laborales"
-                        android:textAlignment="center"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/mainLogo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <!--<ImageView-->
-                    <!--android:id="@+id/person_photo"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="75dp"-->
-                    <!--android:layout_alignParentStart="true"-->
-                    <!--android:layout_alignParentTop="true"-->
-                    <!--android:src="@drawable/injob_logo" />-->
-
-                    <TextView
-                        android:id="@+id/person_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-
-                        android:layout_marginTop="24dp"
-                        android:text="Analista de importaciones"
-                        android:textAlignment="center"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:id="@+id/person_age"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/person_name"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
-                        android:text="Realizar las funciones administrativas inherentes a la función de importación y exportación de mercancías, además de otras tareas relacionadas con la función de Logística, Tráfico y Transportes."
-                        android:textAlignment="center" />
-
-                    <Button
-                        android:id="@+id/button4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/person_age"
-                        android:layout_marginTop="20dp"
-                        android:text="Detalles" />
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/person_photo"
+                    android:layout_marginTop="24dp"
+                    android:text="Ofertas Laborales"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
 
-                </RelativeLayout>
+            </RelativeLayout>
 
-            </android.support.v7.widget.CardView>
+        </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <!--<ImageView-->
-                        <!--android:id="@+id/person_photo2"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="75dp"-->
-                        <!--android:layout_alignParentStart="true"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:src="@drawable/ic_border_color_black_24dp" />-->
-
-                    <TextView
-                        android:id="@+id/person_name2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="24dp"
-                        android:text="Servicio al cliente en ingles"
-                        android:textAlignment="center"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:id="@+id/person_age2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/person_name2"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
-                        android:text="Necesitamos personas que hablen ingles un 85% y que tengan conocimiento en servicio al cliente"
-                        android:textAlignment="center" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
 
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/person_age2"
-                        android:layout_marginTop="20dp"
-                        android:text="Detalles" />
-                </RelativeLayout>
+    </LinearLayout>
 
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <!--<ImageView-->
-                        <!--android:id="@+id/person_photo3"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="75dp"-->
-                        <!--android:layout_alignParentStart="true"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:src="@drawable/ic_work_black_24dp" />-->
-
-                    <TextView
-                        android:id="@+id/person_name3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="24dp"
-                        android:text="Ejecutiva de Ventas"
-                        android:textAlignment="center"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:id="@+id/person_age3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/person_name3"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
-                        android:text="Generar cartera de clientes, visitarlos, ofrecer y vender los servicios de la compañía. Se ofrece salario base + combustible + comisiones"
-                        android:textAlignment="center" />
-
-
-                    <Button
-                        android:id="@+id/button6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/person_age3"
-                        android:layout_marginTop="20dp"
-                        android:text="Detalles" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
-
-                    <!--<ImageView-->
-                        <!--android:id="@+id/person_photo4"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="75dp"-->
-                        <!--android:layout_alignParentStart="true"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:src="@drawable/ic_menu_send" />-->
-
-                    <TextView
-                        android:id="@+id/person_name4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginTop="24dp"
-                        android:text="Desarrollador Java Jr."
-                        android:textAlignment="center"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:id="@+id/person_age4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/person_name4"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="36dp"
-                        android:text="Conocimientos intermedios de Java Experiencia en Java EE ( no indispensable ) Conocimiento de Bases de Datos ( MySQL ) Web Services Dispuesto a aprender"
-                        android:textAlignment="center" />
-
-
-                    <Button
-                        android:id="@+id/button7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/person_age4"
-                        android:layout_marginTop="20dp"
-                        android:text="Detalles" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-    </ScrollView>
 
 </FrameLayout>

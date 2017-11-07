@@ -2,18 +2,14 @@ package com.example.inin.injob.cv;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,31 +19,18 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.inin.injob.MainFragment;
 import com.example.inin.injob.MySingleton;
 import com.example.inin.injob.R;
+import com.example.inin.injob.cv.adapters.ExperienceListAdapter;
 import com.example.inin.injob.models.UserData;
-import com.example.inin.injob.models.cv2.Cv2Response;
-import com.example.inin.injob.models.cv2.Cv2UserData;
-import com.example.inin.injob.models.cv2.DatumCv2;
 import com.example.inin.injob.models.cv3.Cv3Response;
-import com.example.inin.injob.models.cv3.DatumCv3;
 import com.google.gson.Gson;
 
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.SearchView;
-import android.widget.TextView;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
