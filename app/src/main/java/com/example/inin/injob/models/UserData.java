@@ -4,6 +4,7 @@ package com.example.inin.injob.models;
 import com.example.inin.injob.models.cv1.Data;
 import com.example.inin.injob.models.cv2.Cv2UserData;
 import com.example.inin.injob.models.cv3.DatumCv3;
+import com.example.inin.injob.models.cv4.DatumCv4;
 import com.example.inin.injob.models.jobs.DatumJobs;
 
 import java.util.List;
@@ -41,6 +42,20 @@ public class UserData {
         return jobs;
     }
 
+    public Cv2UserData cv2;
+
+    private List<DatumCv3> cv3;
+
+    private List<DatumCv4> cv4;
+
+    public List<DatumCv4> getCv4() {
+        return cv4;
+    }
+
+    public void setCv4(List<DatumCv4> cv4) {
+        this.cv4 = cv4;
+    }
+
     public void setJobs(List<DatumJobs> jobs) {
         this.jobs = jobs;
     }
@@ -50,7 +65,7 @@ public class UserData {
 //        return cv1;
 //    }
 
-    public Cv2UserData cv2;
+
 
     public Cv2UserData getCv2() {
         return cv2;
@@ -65,7 +80,7 @@ public class UserData {
 //    }
 
 
-    private List<DatumCv3> cv3;
+
 
     public List<DatumCv3> getCv3() {
         return cv3;
