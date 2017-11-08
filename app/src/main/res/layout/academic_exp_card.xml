@@ -24,7 +24,7 @@
                 android:layout_alignParentStart="true"
                 android:text="Titulo"
                 android:textAlignment="center"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -46,7 +46,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:text="Grado"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/company"
@@ -56,7 +57,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:text="Institucion"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textSize="12sp" />
 
 
 

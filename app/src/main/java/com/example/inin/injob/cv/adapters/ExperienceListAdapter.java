@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.inin.injob.R;
 import com.example.inin.injob.models.cv3.DatumCv3;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +34,7 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
         private TextView title;
         private TextView description;
         private TextView company;
+        private TextView dates;
         private DatumCv3 currentObject;
         public MyViewHolder (View itemView)
         {
@@ -39,6 +42,8 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             title = (TextView) itemView.findViewById(R.id.title);
             description = (TextView) itemView.findViewById(R.id.description);
             company = (TextView) itemView.findViewById(R.id.company);
+            dates = (TextView) itemView.findViewById(R.id.date);
+
 
         }
 
@@ -46,6 +51,24 @@ public class ExperienceListAdapter extends RecyclerView.Adapter<ExperienceListAd
             this.title.setText(current.getJob());
             this.description.setText(current.getDescription());
             this.company.setText(current.getCompany());
+
+            String finalTxt = "";
+            if(current.getStart()!=null)
+            {
+                Date date = new Date(current.getStart());
+                SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
+                String dateText = df2.format(date);
+                finalTxt = "Desde "+dateText;
+
+                if(current.getEnd()!=null)
+                {
+                    date = new Date(current.getEnd());
+                    finalTxt = finalTxt + " hasta "+ df2.format(date);
+                }
+            }
+            this.dates.setText(finalTxt);
+
+
             this.currentObject = current;
         }
     }

@@ -109,7 +109,7 @@ public class DatumCv3 implements Serializable
         this.start = start;
     }
 
-    public Object getEnd() {
+    public Long getEnd() {
         return end;
     }
 
