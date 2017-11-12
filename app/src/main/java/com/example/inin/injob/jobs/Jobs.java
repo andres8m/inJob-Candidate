@@ -3,7 +3,11 @@ package com.example.inin.injob.jobs;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.inin.injob.MySingleton;
 import com.example.inin.injob.R;
 import com.example.inin.injob.cv.PersonalInfo;
+import com.example.inin.injob.jobs.adapters.JobsListAdapter;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.jobs.JobsResponse;
 import com.google.gson.Gson;
@@ -43,6 +48,23 @@ public class Jobs extends Fragment {
         return inflater.inflate(R.layout.fragment_jobs, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getCV();
+    }
+
+    public void setDataToView()
+    {
+        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
+        JobsListAdapter adapter = new JobsListAdapter(this.getContext(), UserData.Instance().getJobs());
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+    }
+
     public class parseJson extends AsyncTask<JSONObject,Void,Void>
     {
         @Override
@@ -56,9 +78,8 @@ public class Jobs extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
-
             super.onPostExecute(aVoid);
+            setDataToView();
         }
 
         @Override

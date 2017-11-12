@@ -22,7 +22,7 @@ public class DatumJobs implements Serializable
 
     @SerializedName("submit_date")
     @Expose
-    private Integer submitDate;
+    private Long submitDate;
 
     @SerializedName("description")
     @Expose
@@ -30,7 +30,7 @@ public class DatumJobs implements Serializable
 
     @SerializedName("idPreinterview")
     @Expose
-    private Integer idPreinterview;
+    private Long idPreinterview;
 
 
     private final static long serialVersionUID = -3291829325601849463L;
@@ -51,7 +51,7 @@ public class DatumJobs implements Serializable
      * @param company
      * @param idPreinterview
      */
-    public DatumJobs(String search, String title, String company, Integer submitDate, String description, Integer idPreinterview) {
+    public DatumJobs(String search, String title, String company, Long submitDate, String description, Long idPreinterview) {
         super();
         this.search = search;
         this.title = title;
@@ -85,11 +85,11 @@ public class DatumJobs implements Serializable
         this.company = company;
     }
 
-    public Integer getSubmitDate() {
+    public Long getSubmitDate() {
         return submitDate;
     }
 
-    public void setSubmitDate(Integer submitDate) {
+    public void setSubmitDate(Long submitDate) {
         this.submitDate = submitDate;
     }
 
@@ -101,11 +101,11 @@ public class DatumJobs implements Serializable
         this.description = description;
     }
 
-    public Integer getIdPreinterview() {
+    public Long getIdPreinterview() {
         return idPreinterview;
     }
 
-    public void setIdPreinterview(Integer idPreinterview) {
+    public void setIdPreinterview(Long idPreinterview) {
         this.idPreinterview = idPreinterview;
     }
 

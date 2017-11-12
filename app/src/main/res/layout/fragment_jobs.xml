@@ -24,25 +24,30 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
 
-                <ImageView
-                    android:id="@+id/person_photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/injob_logo" />
-
                 <TextView
                     android:id="@+id/mainLogo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/person_photo"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="5dp"
                     android:text="Ofertas Laborales"
                     android:textAlignment="center"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/mainLogo"
+                    android:layout_marginTop="10dp"
+                    android:text="Estas son algunas de las plazas disponibles"
+                    android:textAlignment="center"
+                    android:textSize="15sp" />
+
+
 
 
             </RelativeLayout>
