@@ -81,18 +81,36 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp">
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLight"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="@string/upload_image"
-                    android:textColor="@android:color/white"
-                    android:textColorLink="@android:color/white" />
+                <!--<Button-->
+                    <!--android:id="@+id/button2"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerInParent="true"-->
+                    <!--android:layout_marginTop="10dp"-->
+                    <!--android:background="@color/colorLight"-->
+                    <!--android:gravity="center"-->
+                    <!--android:padding="15dp"-->
+                    <!--android:text="@string/upload_image"-->
+                    <!--android:textColor="@android:color/white"-->
+                    <!--android:textColorLink="@android:color/white" />-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upload_image"
+                        android:theme="@style/PrimaryFlatButton"
+                        android:gravity="center"
+                        android:layout_centerInParent="true"/>
+
+                    <!--<Button-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Ver Detalles"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -320,7 +338,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:labelFor="@id/penales"
+
                 android:text="Antecedentes Penales" />
 
             <RelativeLayout
@@ -328,18 +346,21 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp">
 
-                <Button
-                    android:id="@+id/penales"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upload_image"
+                        android:theme="@style/PrimaryFlatButton"/>
+
+                    <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLight"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="@string/upload_image"
-                    android:textColor="@android:color/white"
-                    android:textColorLink="@android:color/white" />
+                    android:text="@string/delete_image"
+                    android:theme="@style/PrimaryFlatButton" />
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -349,7 +370,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:labelFor="@id/penales"
+
                 android:text="Antecedentes Policacos" />
 
             <RelativeLayout
@@ -357,18 +378,21 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp">
 
-                <Button
-                    android:id="@+id/policiacos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLight"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="@string/upload_image"
-                    android:textColor="@android:color/white"
-                    android:textColorLink="@android:color/white" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upload_image"
+                        android:theme="@style/PrimaryFlatButton"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/delete_image"
+                        android:theme="@style/PrimaryFlatButton" />
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -378,7 +402,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:labelFor="@id/documento"
                 android:text="Documento de Identificación" />
 
             <RelativeLayout
@@ -387,18 +410,21 @@
                 android:layout_marginBottom="35dp"
                 android:layout_marginTop="15dp">
 
-                <Button
-                    android:id="@+id/documento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorLight"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:text="@string/upload_image"
-                    android:textColor="@android:color/white"
-                    android:textColorLink="@android:color/white" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/upload_image"
+                        android:theme="@style/PrimaryFlatButton"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/delete_image"
+                        android:theme="@style/PrimaryFlatButton" />
+                </LinearLayout>
 
             </RelativeLayout>
 

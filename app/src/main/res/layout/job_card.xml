@@ -51,19 +51,42 @@
                 android:text="Realizar las funciones administrativas inherentes a la función de importación y exportación de mercancías, además de otras tareas relacionadas con la función de Logística, Tráfico y Transportes."
                 android:textAlignment="center" />
 
-            <Button
-                android:id="@+id/details_button"
-                android:layout_width="wrap_content"
+            <!--<Button-->
+                <!--android:id="@+id/details_button"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/offer_detail"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/colorLight"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="15dp"-->
+                <!--android:text="@string/details"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textColorLink="@android:color/white" />-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/offer_detail"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorAccentLight" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/offer_detail"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="15dp"
-                android:background="@color/colorLight"
-                android:gravity="center"
-                android:padding="15dp"
-                android:text="@string/details"
-                android:textColor="@android:color/white"
-                android:textColorLink="@android:color/white" />
+                android:layout_below="@id/offer_detail">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aplicar"
+                    android:theme="@style/PrimaryFlatButton" />
+                <!--<Button-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Ver Detalles"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+            </LinearLayout>
 
 
         </RelativeLayout>

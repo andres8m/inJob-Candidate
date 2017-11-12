@@ -32,7 +32,8 @@ Una vez termines de llenar tu CV se enviará a tu correo un link para que te pue
     <string name="cv2_desc">Busca o selecciona hasta 5 puestos a los que te gustaria aplicar.
     </string>
 
-    <string name="upload_image">Subir imagen
+    <string name="upload_image">Subir imagen</string>
+    <string name="delete_image">Eliminar imagen
     </string>
 
     <string name="details">Detalles

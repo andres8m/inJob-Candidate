@@ -44,6 +44,30 @@
                     android:textAlignment="center"
                     android:textSize="12sp" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/person_age"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorAccentLight" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/person_age">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Añadir nueva experiencia"
+                        android:theme="@style/PrimaryFlatButton" />
+
+                    <!--<Button-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Ver Detalles"-->
+                    <!--android:theme="@style/PrimaryFlatButton" />-->
+                </LinearLayout>
+
             </RelativeLayout>
 
 

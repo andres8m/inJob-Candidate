@@ -63,7 +63,7 @@ public class ProfessionalExperienceList extends Fragment {
         final FragmentManager manager = getFragmentManager();
         final FragmentTransaction transaction = manager.beginTransaction();
 
-        final Button button = view.findViewById(R.id.newExperience);
+
 
 //        button.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
