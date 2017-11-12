@@ -109,14 +109,16 @@ public class ExtraInfo extends Fragment {
             EditText editText6 = getView().findViewById(R.id.pb6);
             EditText editText7 = getView().findViewById(R.id.pb7);
 
-            editText1.setText(UserData.Instance().getCv6().get(0).getValor());
-            editText2.setText(UserData.Instance().getCv6().get(1).getValor());
-            editText3.setText(UserData.Instance().getCv6().get(2).getValor());
-            editText4.setText(UserData.Instance().getCv6().get(3).getValor());
-            editText5.setText(UserData.Instance().getCv6().get(4).getValor());
-            editText6.setText(UserData.Instance().getCv6().get(5).getValor());
-            editText7.setText(UserData.Instance().getCv6().get(6).getValor());
-
+            if(UserData.Instance().getCv6().size()>=6)
+            {
+                editText1.setText(UserData.Instance().getCv6().get(0).getValor());
+                editText2.setText(UserData.Instance().getCv6().get(1).getValor());
+                editText3.setText(UserData.Instance().getCv6().get(2).getValor());
+                editText4.setText(UserData.Instance().getCv6().get(3).getValor());
+                editText5.setText(UserData.Instance().getCv6().get(4).getValor());
+                editText6.setText(UserData.Instance().getCv6().get(5).getValor());
+                editText7.setText(UserData.Instance().getCv6().get(6).getValor());
+            }
         }
 
         @Override
