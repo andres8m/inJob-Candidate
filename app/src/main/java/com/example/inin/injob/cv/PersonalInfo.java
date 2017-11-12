@@ -65,7 +65,7 @@ public class PersonalInfo extends Fragment {
 
     private String[] arraySpinnerVisa;
     private String [] arraySpinnerCountry;
-
+    ProgressDialog progress;
     public PersonalInfo() {
         // Required empty public constructor
     }
@@ -81,6 +81,11 @@ public class PersonalInfo extends Fragment {
 
 
     private void getCV() {
+        progress = new ProgressDialog(getActivity());
+        progress.setMessage("Por favor espere");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+        progress.show();
         String url = "https://app.inin.global/api/cv";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -121,21 +126,18 @@ public class PersonalInfo extends Fragment {
 
     public class parseJson extends AsyncTask<JSONObject,Void,Void>
     {
+
+
+
         @Override
         protected void onPreExecute() {
-//            RelativeLayout loadLayout = findViewById(R.id.loadingLayout);
-//            loadLayout.setVisibility(View.VISIBLE);
-//            ProgressBar loadBar = findViewById(R.id.indeterminateBar);
-//            loadBar.setVisibility(View.VISIBLE);
-            super.onPreExecute();
+
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-
-//            ProgressBar loadBar = findViewById(R.id.indeterminateBar);
-//            loadBar.setVisibility(View.INVISIBLE);
             setDataInView(getView());
+            progress.dismiss();
             super.onPostExecute(aVoid);
         }
 
@@ -156,30 +158,8 @@ public class PersonalInfo extends Fragment {
 
         @Override
         protected Void doInBackground(JSONObject... jsonObjects) {
-//                        progress.dismiss();
             Gson gson = new Gson();
             CvResponse cvResponse = gson.fromJson(jsonObjects[0].toString(), CvResponse.class);
-//            Cv1UserData cv1UserData = new Cv1UserData();
-//            cv1UserData.setNombre(cvResponse.getData().getNombre());
-//            cv1UserData.setApellido(cvResponse.getData().getApellido());
-//            cv1UserData.setDireccion(cvResponse.getData().getDireccion());
-//            cv1UserData.setZona(cvResponse.getData().getZona());
-//            cv1UserData.setCelular(cvResponse.getData().getCelular());
-//            cv1UserData.setTelefono(cvResponse.getData().getTelefono());
-//            cv1UserData.setGenero(cvResponse.getData().getGenero());
-//            cv1UserData.setNacimiento(cvResponse.getData().getNacimiento());
-//            cv1UserData.setLicencia(cvResponse.getData().getLicencia());
-//            cv1UserData.setVisa(cvResponse.getData().getVisa());
-//            cv1UserData.setFoto(cvResponse.getData().getFoto());
-//            cv1UserData.setPoliciacos(cvResponse.getData().getPoliciacos());
-//            cv1UserData.setPenales(cvResponse.getData().getPenales());
-//            cv1UserData.setDocumento(cvResponse.getData().getDocumento());
-//            cv1UserData.setUsuario(cvResponse.getData().getUsuario());
-//            cv1UserData.setIdentificacion(cvResponse.getData().getIdentificacion());
-//            cv1UserData.setPais(cvResponse.getData().getPais());
-//            cv1UserData.setDepartamento(cvResponse.getData().getDepartamento());
-//            cv1UserData.setMunicipio(cvResponse.getData().getMunicipio());
-//            cv1UserData.setNacionalidad(cvResponse.getData().getNacionalidad());
             UserData.Instance().setCv1(cvResponse.getData());
             return null;
         }
