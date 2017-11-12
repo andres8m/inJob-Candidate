@@ -22,6 +22,7 @@ import com.example.inin.injob.cv.AcademicExperienceList;
 import com.example.inin.injob.cv.ExtraInfo;
 import com.example.inin.injob.cv.JobInterest;
 import com.example.inin.injob.cv.Languages;
+import com.example.inin.injob.cv.LanguagesList;
 import com.example.inin.injob.cv.PersonalInfo;
 import com.example.inin.injob.cv.ProfessionalExp;
 import com.example.inin.injob.cv.ProfessionalExperienceList;
@@ -81,7 +82,7 @@ public class StepsFragment extends Fragment {
                     return cv4;
 
                 case 4:
-                    Languages cv5 = new Languages();
+                    LanguagesList cv5 = new LanguagesList();
                     return cv5;
 
                 case 5:

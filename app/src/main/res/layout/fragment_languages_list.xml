@@ -1,0 +1,65 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.inin.injob.cv.LanguagesList">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+
+                <TextView
+                    android:id="@+id/person_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="15dp"
+                    android:text="Idiomas"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/person_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/person_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Aquí puedes ingresar todos los idiomas que dominas"
+                    android:textAlignment="center" />
+
+            </RelativeLayout>
+
+
+
+
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv"
+            android:layout_marginTop="20dp"
+            android:scrollbars="vertical"
+            />
+
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -5,6 +5,7 @@ import com.example.inin.injob.models.cv1.Data;
 import com.example.inin.injob.models.cv2.Cv2UserData;
 import com.example.inin.injob.models.cv3.DatumCv3;
 import com.example.inin.injob.models.cv4.DatumCv4;
+import com.example.inin.injob.models.cv5.DatumCv5;
 import com.example.inin.injob.models.jobs.DatumJobs;
 
 import java.util.List;
@@ -38,18 +39,28 @@ public class UserData {
 
     private List<DatumJobs> jobs;
 
-    public List<DatumJobs> getJobs() {
-        return jobs;
-    }
-
     public Cv2UserData cv2;
 
     private List<DatumCv3> cv3;
 
     private List<DatumCv4> cv4;
 
-    public List<DatumCv4> getCv4() {
-        return cv4;
+    public List<DatumCv5> cv5;
+
+
+
+    // SET Constructors
+
+    public List<DatumCv5> getCv5() {
+        return cv5;
+    }
+
+    public void setCv5(List<DatumCv5> cv5) {
+        this.cv5 = cv5;
+    }
+
+    public List<DatumJobs> getJobs() {
+        return jobs;
     }
 
     public void setCv4(List<DatumCv4> cv4) {
@@ -60,12 +71,9 @@ public class UserData {
         this.jobs = jobs;
     }
 
-
-    //    public Cv1UserData getCv1() {
-//        return cv1;
-//    }
-
-
+    public List<DatumCv4> getCv4() {
+        return cv4;
+    }
 
     public Cv2UserData getCv2() {
         return cv2;
@@ -74,13 +82,6 @@ public class UserData {
     public void setCv2(Cv2UserData cv2) {
         this.cv2 = cv2;
     }
-
-//    public void setCv1(Cv1UserData cv1) {
-//        this.cv1 = cv1;
-//    }
-
-
-
 
     public List<DatumCv3> getCv3() {
         return cv3;
@@ -103,8 +104,6 @@ public class UserData {
     public void setCv1(Data cv1) {
         this.cv1 = cv1;
     }
-
-
 
     public UserData(Data cv1) {
         this.cv1 = cv1;
@@ -187,7 +186,6 @@ public class UserData {
     public void setImage(String image) {
         this.image = image;
     }
-
 
     public Boolean getPassOk() {
         return passOk;
