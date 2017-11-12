@@ -2,6 +2,7 @@ package com.example.inin.injob;
 
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -52,6 +53,45 @@ public class StepsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_steps, container, false);
+    }
+
+    public class parseJson extends AsyncTask<Void,Void,SectionsPagerAdapter>
+    {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(SectionsPagerAdapter sectionsPagerAdapter) {
+            super.onPostExecute(sectionsPagerAdapter);
+            setData();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(SectionsPagerAdapter sectionsPagerAdapter) {
+            super.onCancelled(sectionsPagerAdapter);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+
+        @Override
+        protected SectionsPagerAdapter doInBackground(Void... voids) {
+            mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
+            // Set up the ViewPager with the sections adapter.
+            mViewPager = (ViewPager) getView().findViewById(R.id.containercv);
+
+            return null;
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -112,15 +152,8 @@ public class StepsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) view.findViewById(R.id.containercv);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabs);
-
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        new parseJson().execute();
 
 
 
@@ -133,6 +166,14 @@ public class StepsFragment extends Fragment {
             }
         });
 
+    }
+
+    public void setData()
+    {
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        TabLayout tabLayout = (TabLayout) getView().findViewById(R.id.tabs);
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
 
 }

@@ -65,7 +65,7 @@ public class PersonalInfo extends Fragment {
 
     private String[] arraySpinnerVisa;
     private String [] arraySpinnerCountry;
-    ProgressDialog progress;
+//    ProgressDialog progress;
     public PersonalInfo() {
         // Required empty public constructor
     }
@@ -81,11 +81,11 @@ public class PersonalInfo extends Fragment {
 
 
     private void getCV() {
-        progress = new ProgressDialog(getActivity());
-        progress.setMessage("Por favor espere");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.setIndeterminate(true);
-        progress.show();
+//        progress = new ProgressDialog(getActivity());
+//        progress.setMessage("Por favor espere");
+//        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progress.setIndeterminate(true);
+//        progress.show();
         String url = "https://app.inin.global/api/cv";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -137,7 +137,7 @@ public class PersonalInfo extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             setDataInView(getView());
-            progress.dismiss();
+//            progress.dismiss();
             super.onPostExecute(aVoid);
         }
 
