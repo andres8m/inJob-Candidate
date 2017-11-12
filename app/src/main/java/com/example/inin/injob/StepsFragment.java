@@ -27,6 +27,7 @@ import com.example.inin.injob.cv.PersonalInfo;
 import com.example.inin.injob.cv.ProfessionalExp;
 import com.example.inin.injob.cv.ProfessionalExperienceList;
 import com.example.inin.injob.cv.References;
+import com.example.inin.injob.cv.ReferencesList;
 
 
 /**
@@ -90,7 +91,7 @@ public class StepsFragment extends Fragment {
                     return cv6;
 
                 case 6:
-                    References cv7 = new References();
+                    ReferencesList cv7 = new ReferencesList();
                     return cv7;
 
                 default:
