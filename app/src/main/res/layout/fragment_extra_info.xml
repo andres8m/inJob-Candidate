@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:labelFor="@id/maternal"
-                android:text="Ejemplo: https://www.youtube.com/watch?v=M7lc1UVf-VE" />
+                android:text="Link de video" />
 
             <EditText
                 android:id="@+id/birthday"
@@ -77,13 +77,14 @@
                 android:layout_marginTop="20dp"
                 android:labelFor="@id/pb1"
                 android:text="Publicaciones" />
+            
 
             <EditText
                 android:id="@+id/pb1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textSize="14sp" />
 
             <TextView
@@ -99,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textSize="14sp" />
 
             <TextView
@@ -115,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textSize="14sp" />
 
             <TextView
@@ -131,7 +132,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textSize="14sp" />
 
             <TextView
@@ -147,7 +148,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:labelFor="@id/pb2"
+                android:text="Perteneciente a Grupos" />
+
+            <EditText
+                android:id="@+id/pb6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:labelFor="@id/pb2"
+                android:text="Perteneciente a Grupos" />
+
+            <EditText
+                android:id="@+id/pb7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine"
                 android:textSize="14sp" />
 
         </LinearLayout>

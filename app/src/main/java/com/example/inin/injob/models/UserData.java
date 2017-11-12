@@ -6,6 +6,7 @@ import com.example.inin.injob.models.cv2.Cv2UserData;
 import com.example.inin.injob.models.cv3.DatumCv3;
 import com.example.inin.injob.models.cv4.DatumCv4;
 import com.example.inin.injob.models.cv5.DatumCv5;
+import com.example.inin.injob.models.cv6.DatumCv6;
 import com.example.inin.injob.models.jobs.DatumJobs;
 
 import java.util.List;
@@ -47,9 +48,18 @@ public class UserData {
 
     public List<DatumCv5> cv5;
 
+    public List<DatumCv6> cv6;
 
 
-    // SET Constructors
+    // SET Constructors, GETTERS & SETTERS
+
+    public List<DatumCv6> getCv6() {
+        return cv6;
+    }
+
+    public void setCv6(List<DatumCv6> cv6) {
+        this.cv6 = cv6;
+    }
 
     public List<DatumCv5> getCv5() {
         return cv5;
