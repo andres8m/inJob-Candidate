@@ -11,63 +11,81 @@ public class Data implements Serializable
     @SerializedName("nombre")
     @Expose
     private String nombre;
+
     @SerializedName("apellido")
     @Expose
     private String apellido;
+
     @SerializedName("direccion")
     @Expose
     private String direccion;
+
     @SerializedName("zona")
     @Expose
     private String zona;
+
     @SerializedName("celular")
     @Expose
     private String celular;
+
     @SerializedName("telefono")
     @Expose
     private String telefono;
+
     @SerializedName("genero")
     @Expose
     private String genero;
+
     @SerializedName("nacimiento")
     @Expose
     private Long nacimiento;
+
     @SerializedName("licencia")
     @Expose
     private String licencia;
+
     @SerializedName("visa")
     @Expose
     private Boolean visa;
+
     @SerializedName("foto")
     @Expose
     private String foto;
+
     @SerializedName("policiacos")
     @Expose
     private Boolean policiacos;
+
     @SerializedName("penales")
     @Expose
     private Boolean penales;
+
     @SerializedName("documento")
     @Expose
     private Boolean documento;
+
     @SerializedName("usuario")
     @Expose
     private Long usuario;
+
     @SerializedName("identificacion")
     @Expose
     private String identificacion;
+
     @SerializedName("pais")
     @Expose
-    private Long pais;
+    private Integer pais;
+
     @SerializedName("departamento")
     @Expose
     private Long departamento;
+
     @SerializedName("municipio")
     @Expose
     private Long municipio;
+
     @SerializedName("nacionalidad")
     @Expose
-
     private Integer nacionalidad;
 
     private final static long serialVersionUID = -797541353171941056L;
@@ -102,7 +120,7 @@ public class Data implements Serializable
      * @param nacionalidad
      * @param celular
      */
-    public Data(String nombre, String apellido, String direccion, String zona, String celular, String telefono, String genero, Long nacimiento, String licencia, Boolean visa, String foto, Boolean policiacos, Boolean penales, Boolean documento, Long usuario, String identificacion, Long pais, Long departamento, Long municipio, Integer nacionalidad) {
+    public Data(String nombre, String apellido, String direccion, String zona, String celular, String telefono, String genero, Long nacimiento, String licencia, Boolean visa, String foto, Boolean policiacos, Boolean penales, Boolean documento, Long usuario, String identificacion, Integer pais, Long departamento, Long municipio, Integer nacionalidad) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
@@ -254,11 +272,11 @@ public class Data implements Serializable
         this.identificacion = identificacion;
     }
 
-    public Long getPais() {
+    public Integer getPais() {
         return pais;
     }
 
-    public void setPais(Long pais) {
+    public void setPais(Integer pais) {
         this.pais = pais;
     }
 

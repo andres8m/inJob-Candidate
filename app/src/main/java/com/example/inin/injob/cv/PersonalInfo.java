@@ -36,12 +36,16 @@ import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv1.Cv1UserData;
 import com.example.inin.injob.models.cv1.CvResponse;
+import com.example.inin.injob.models.cv1.department.DatumDepartment;
+import com.example.inin.injob.models.cv1.department.DepartmentResponse;
+import com.example.inin.injob.models.cv1.town.TownResponse;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,6 +69,10 @@ public class PersonalInfo extends Fragment {
 
     private String[] arraySpinnerVisa;
     private String [] arraySpinnerCountry;
+    private String[] arrayDepartment;
+    private String[] arrayTown;
+    private DepartmentResponse departmentResponse = new DepartmentResponse();
+    private TownResponse townResponse = new TownResponse();
 //    ProgressDialog progress;
     public PersonalInfo() {
         // Required empty public constructor
@@ -80,12 +88,8 @@ public class PersonalInfo extends Fragment {
     }
 
 
-    private void getCV() {
-//        progress = new ProgressDialog(getActivity());
-//        progress.setMessage("Por favor espere");
-//        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progress.setIndeterminate(true);
-//        progress.show();
+    private void getCV()
+    {
         String url = "https://app.inin.global/api/cv";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
@@ -100,12 +104,7 @@ public class PersonalInfo extends Fragment {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-//                        progress.dismiss();
-//                        Context context = this.getApplicationContext();
-//                        Toast toast = Toast.makeText(context, "Credenciales invalidas", Toast.LENGTH_SHORT);
-//                        toast.show();
                         // TODO Auto-generated method stub
-
                     }
                 })
         {
@@ -119,9 +118,166 @@ public class PersonalInfo extends Fragment {
         };
 
         MySingleton.getInstance(this.getContext()).addToRequestQueue(jsObjRequest);
+    }
+
+    public void getDepartment(Integer country)
+    {
+        String url = "https://app.inin.global/api/country/"+ country +"/department";
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        new getDepartmentJson().execute(response);
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO Auto-generated method stub
+                    }
+                })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization","Bearer "+UserData.Instance().getToken());
+                //..add other headers
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(this.getContext()).addToRequestQueue(jsObjRequest);
+    }
+
+    public void getTown(Long country, Long department)
+    {
+        String url = "https://app.inin.global/api/country/"+ country +"/department/"+department+"/town";
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        new getTownJson().execute(response);
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO Auto-generated method stub
+                    }
+                })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization","Bearer "+UserData.Instance().getToken());
+                //..add other headers
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(this.getContext()).addToRequestQueue(jsObjRequest);
+    }
 
 
 
+
+
+    public class getTownJson extends AsyncTask<JSONObject,Void,Void>
+    {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Void aVoid) {
+            super.onCancelled(aVoid);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+
+        @Override
+        protected Void doInBackground(JSONObject... jsonObjects) {
+            Gson gson = new Gson();
+            townResponse= gson.fromJson(jsonObjects[0].toString(), TownResponse.class);
+            return null;
+        }
+    }
+
+    public class getDepartmentJson extends AsyncTask<JSONObject,Void,Void>
+    {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+//            List<String> arraySpinnerDepartment = new ArrayList<>();
+//
+//            for(DatumDepartment x: departmentResponse.getData())
+//            {
+//                String y = x.getName();
+//                arraySpinnerDepartment.add(y);
+//            }
+//
+            Spinner spinner = (Spinner) getView().findViewById(R.id.departamento);
+//            ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(getContext(),
+//                    android.R.layout.simple_spinner_item, arraySpinnerDepartment);
+//            s6.setAdapter(adapter5);
+//            s6.setSelection();
+
+//            Spinner spinner = (Spinner) findViewById(R.id.spinner);
+            ArrayAdapter<DatumDepartment> adapter = new ArrayAdapter<DatumDepartment>(getContext()
+                    ,android.R.layout.simple_spinner_item,departmentResponse.getData()); // initialize the adapter
+//            adapter.setDropDownViewResource(android.R.layout.some_view);
+            spinner.setAdapter(adapter);
+
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Void aVoid) {
+            super.onCancelled(aVoid);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+
+        @Override
+        protected Void doInBackground(JSONObject... jsonObjects) {
+            Gson gson = new Gson();
+            departmentResponse= gson.fromJson(jsonObjects[0].toString(), DepartmentResponse.class);
+            return null;
+        }
     }
 
     public class parseJson extends AsyncTask<JSONObject,Void,Void>
@@ -176,11 +332,14 @@ public class PersonalInfo extends Fragment {
                    "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
                    "Cubana", "Brasileña","Argentina","Venezolana","Chilena","China","Taiwanesa","Japonesa","Boliviana"};
 
-           this.arraySpinnerLicencia = new String[]{"(C) Liviana", "(B) Comercial", "(A) Profesional", "(M) Motocicleta", "(E) Maquinaria Agrícola"};
+           this.arraySpinnerLicencia = new String[]{"No poseo Licencia de Conducir","Liviana", "Comercial", "Profesional", "Motocicleta",
+                   "Maquinaria Agrícola"};
 
            this.arraySpinnerVisa = new String[]{"Si", "No"};
 
-           this.arraySpinnerCountry = new String[]{"Guatemala"};
+           this.arraySpinnerCountry = new String[]{"Guatemala","El Salvador","Honduras",
+                   "Nicaragua","Costa Rica", "México", "Colombia", "Venezuela","Ecuador",
+                    "Perú","Argentina","Chile","Panamá","España"};
 
 
 
@@ -240,6 +399,9 @@ public class PersonalInfo extends Fragment {
            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
            s2.setAdapter(adapter2);
+           s2.setSelection(UserData.Instance().getCv1().getNacionalidad());
+
+
            if(UserData.Instance().getCv1().getNacionalidad()!=null)
            {
                s2.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
@@ -249,6 +411,7 @@ public class PersonalInfo extends Fragment {
            ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerLicencia);
            s3.setAdapter(adapter3);
+           s3.setSelection(getLicenseIndex(UserData.Instance().getCv1().getLicencia()));
 //        s3.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
 
            Spinner s4 = (Spinner) view.findViewById(R.id.visa);
@@ -271,12 +434,17 @@ public class PersonalInfo extends Fragment {
 
 
            Spinner s5 = (Spinner) view.findViewById(R.id.pais);
-           Spinner s6 = (Spinner) view.findViewById(R.id.departamento);
            Spinner s7 = (Spinner) view.findViewById(R.id.municipio);
            ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerCountry);
+
+
+
            s5.setAdapter(adapter5);
-           s6.setAdapter(adapter5);
+           s5.setSelection(UserData.Instance().getCv1().getPais()-6);
+
+           getDepartment(UserData.Instance().getCv1().getPais());
+
            s7.setAdapter(adapter5);
 
            ImageView imageView = (ImageView) view.findViewById(R.id.imageView2);
@@ -291,6 +459,33 @@ public class PersonalInfo extends Fragment {
 
 
 
+       }
+
+       public Integer getLicenseIndex(String data)
+       {
+           switch (data)
+           {
+               case "N":
+                   return 1;
+
+               case "C":
+                   return 2;
+
+               case "B":
+                   return 3;
+
+               case "A":
+                   return 4;
+
+               case "M":
+                   return 5;
+
+               case "E":
+                   return 6;
+
+               default:
+                   return 1;
+           }
        }
 
 }

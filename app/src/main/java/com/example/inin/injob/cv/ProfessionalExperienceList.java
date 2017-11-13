@@ -77,7 +77,9 @@ public class ProfessionalExperienceList extends Fragment {
 
     public void setDataToView()
     {
-        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
+        View view = getView();
+        assert view != null;
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         ExperienceListAdapter adapter = new ExperienceListAdapter(this.getContext(), UserData.Instance().getCv3());
         recyclerView.setAdapter(adapter);
 
