@@ -32,10 +32,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_marginTop="15dp"
                         android:text="Referencias Personales"
                         android:textAlignment="center"
-                        android:textSize="30sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -135,10 +134,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_marginTop="15dp"
                         android:text="Referencias Profesionales"
                         android:textAlignment="center"
-                        android:textSize="30sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
 
