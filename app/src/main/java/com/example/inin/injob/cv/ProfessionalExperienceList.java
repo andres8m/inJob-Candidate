@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -64,15 +65,23 @@ public class ProfessionalExperienceList extends Fragment {
         final FragmentTransaction transaction = manager.beginTransaction();
 
 
+        Button addBtn = (Button) getView().findViewById(R.id.newInterest);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
 
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                // Code here executes on main thread after user presses button
-//                transaction.replace(R.id.principal_container, new ProfessionalExp());
-//                transaction.commit();
-//            }
-//        });
+                showDialog();
 
+            }
+        });
+
+    }
+
+    void showDialog()
+    {
+        FragmentManager fm = getChildFragmentManager();
+        ProfessionalExp editNameDialogFragment = ProfessionalExp.newInstance();
+        editNameDialogFragment.show(fm, "fragment_edit_name");
     }
 
     public void setDataToView()

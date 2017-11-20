@@ -63,9 +63,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/person_age">
+
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
                             android:text="Añadir nuevo interes"
                             android:theme="@style/PrimaryFlatButton" />
                         <!--<Button-->

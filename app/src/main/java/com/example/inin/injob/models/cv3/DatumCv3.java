@@ -11,9 +11,11 @@ public class DatumCv3 implements Serializable
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("job")
     @Expose
     private String job;
+
     @SerializedName("company")
     @Expose
     private String company;
@@ -29,18 +31,22 @@ public class DatumCv3 implements Serializable
     @SerializedName("description")
     @Expose
     private String description;
+
     @SerializedName("companyAddress")
     @Expose
     private String companyAddress;
     @SerializedName("companyEmail")
     @Expose
     private Object companyEmail;
+
     @SerializedName("companyPhone")
     @Expose
     private String companyPhone;
+
     @SerializedName("companyWebsite")
     @Expose
-    private Object companyWebsite;
+    private String companyWebsite;
+
     private final static long serialVersionUID = -448757188282912040L;
 
     /**
@@ -63,7 +69,7 @@ public class DatumCv3 implements Serializable
      * @param job
      * @param end
      */
-    public DatumCv3(Integer id, String job, String company, Long start, Long end, String description, String companyAddress, Object companyEmail, String companyPhone, Object companyWebsite) {
+    public DatumCv3(Integer id, String job, String company, Long start, Long end, String description, String companyAddress, Object companyEmail, String companyPhone, String companyWebsite) {
         super();
         this.id = id;
         this.job = job;
@@ -149,11 +155,11 @@ public class DatumCv3 implements Serializable
         this.companyPhone = companyPhone;
     }
 
-    public Object getCompanyWebsite() {
+    public String getCompanyWebsite() {
         return companyWebsite;
     }
 
-    public void setCompanyWebsite(Object companyWebsite) {
+    public void setCompanyWebsite(String companyWebsite) {
         this.companyWebsite = companyWebsite;
     }
 

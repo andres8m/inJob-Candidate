@@ -88,7 +88,7 @@ public class StepsFragment extends Fragment {
         protected SectionsPagerAdapter doInBackground(Void... voids) {
             mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
             // Set up the ViewPager with the sections adapter.
-            mViewPager = (ViewPager) getView().findViewById(R.id.containercv);
+            mViewPager = (ViewPager) getActivity().findViewById(R.id.containercv);
 
             return null;
         }
@@ -179,7 +179,7 @@ public class StepsFragment extends Fragment {
     public void setData()
     {
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        TabLayout tabLayout = (TabLayout) getView().findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
