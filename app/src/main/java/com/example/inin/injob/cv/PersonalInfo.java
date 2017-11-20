@@ -90,7 +90,7 @@ public class PersonalInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
+        getCV();
         return inflater.inflate(R.layout.fragment_personal_info, container, false);
     }
 
@@ -342,7 +342,7 @@ public class PersonalInfo extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-            getCV();
+
        }
 
        public void setDataInView(View view)

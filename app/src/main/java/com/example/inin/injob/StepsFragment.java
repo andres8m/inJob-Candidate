@@ -42,6 +42,7 @@ public class StepsFragment extends Fragment {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private TabLayout tabLayout;
 
     public StepsFragment() {
         // Required empty public constructor
@@ -151,35 +152,13 @@ public class StepsFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-
-
+        tabLayout = (TabLayout) getActivity().findViewById(R.id.tabs);
         new parseJson().execute();
-
-
-
-//        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-////                FragmentManager fm = getChildFragmentManager();
-//
-////if you added fragment via layout xml
-////                PersonalInfo fragment = (PersonalInfo)fm.findFragmentById(R.id.containercv);
-////                fragment.attemptSaveCv1();
-//
-//
-////                Snackbar.make(view, "Datos guardados exitosamente!", Snackbar.LENGTH_LONG)
-////                        .setAction("Continua en el siguiente paso", null).show();
-//            }
-//        });
-
     }
 
     public void setData()
     {
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
