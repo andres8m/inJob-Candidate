@@ -56,12 +56,13 @@
                     android:layout_below="@id/person_age">
 
                     <Button
+                        android:id="@+id/addLanguage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:text="Añadir nueva lenguaje"
-                        android:theme="@style/PrimaryFlatButton"
-                        android:id="@+id/addLanguage"/>
+                        android:textSize="10sp"
+                        android:theme="@style/PrimaryFlatButton" />
 
                     <!--<Button-->
                     <!--android:layout_width="wrap_content"-->

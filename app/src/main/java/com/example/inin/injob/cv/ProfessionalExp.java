@@ -154,6 +154,7 @@ public class ProfessionalExp extends DialogFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        getDialog().setTitle("Agregar Experiencia Profesional");
         final EditText editTextPuesto = view.findViewById(R.id.editTextPuesto);
         final EditText editTextStart = view.findViewById(R.id.startDate);
         final EditText editTextEnd = view.findViewById(R.id.endDate);

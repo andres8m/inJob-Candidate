@@ -131,7 +131,11 @@ public class LanguagesList extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            setDataToView();
+
+            if(getView()!=null)
+            {
+                setDataToView();
+            }
         }
 
         @Override
