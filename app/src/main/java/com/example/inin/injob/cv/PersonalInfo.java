@@ -244,8 +244,10 @@ public class PersonalInfo extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-//            List<String> arraySpinnerDepartment = new ArrayList<>();
+
+            if(getView()!=null)
+            {
+                //            List<String> arraySpinnerDepartment = new ArrayList<>();
 //
 //            for(DatumDepartment x: departmentResponse.getData())
 //            {
@@ -253,17 +255,20 @@ public class PersonalInfo extends Fragment {
 //                arraySpinnerDepartment.add(y);
 //            }
 //
-            Spinner spinner = (Spinner) getView().findViewById(R.id.departamento);
+                Spinner spinner = (Spinner) getView().findViewById(R.id.departamento);
 //            ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(getContext(),
 //                    android.R.layout.simple_spinner_item, arraySpinnerDepartment);
 //            s6.setAdapter(adapter5);
 //            s6.setSelection();
 
 //            Spinner spinner = (Spinner) findViewById(R.id.spinner);
-            ArrayAdapter<DatumDepartment> adapter = new ArrayAdapter<DatumDepartment>(getContext()
-                    ,android.R.layout.simple_spinner_item,departmentResponse.getData()); // initialize the adapter
+                ArrayAdapter<DatumDepartment> adapter = new ArrayAdapter<DatumDepartment>(getContext()
+                        ,android.R.layout.simple_spinner_item,departmentResponse.getData()); // initialize the adapter
 //            adapter.setDropDownViewResource(android.R.layout.some_view);
-            spinner.setAdapter(adapter);
+                spinner.setAdapter(adapter);
+            }
+            super.onPostExecute(aVoid);
+
 
         }
 
@@ -302,8 +307,12 @@ public class PersonalInfo extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            setDataInView(getView());
+            if(getView()!=null)
+            {
+                setDataInView(getView());
 //            progress.dismiss();
+            }
+
             super.onPostExecute(aVoid);
         }
 
