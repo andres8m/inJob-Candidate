@@ -157,14 +157,22 @@ public class StepsFragment extends Fragment {
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Datos guardados exitosamente!", Snackbar.LENGTH_LONG)
-                        .setAction("Continua en el siguiente paso", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+////                FragmentManager fm = getChildFragmentManager();
+//
+////if you added fragment via layout xml
+////                PersonalInfo fragment = (PersonalInfo)fm.findFragmentById(R.id.containercv);
+////                fragment.attemptSaveCv1();
+//
+//
+////                Snackbar.make(view, "Datos guardados exitosamente!", Snackbar.LENGTH_LONG)
+////                        .setAction("Continua en el siguiente paso", null).show();
+//            }
+//        });
 
     }
 

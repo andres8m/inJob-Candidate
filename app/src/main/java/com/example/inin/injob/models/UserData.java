@@ -1,7 +1,7 @@
 package com.example.inin.injob.models;
 
 
-import com.example.inin.injob.models.cv1.Data;
+import com.example.inin.injob.models.cv1.DataCV1;
 import com.example.inin.injob.models.cv2.Cv2UserData;
 import com.example.inin.injob.models.cv3.DatumCv3;
 import com.example.inin.injob.models.cv4.DatumCv4;
@@ -40,6 +40,9 @@ public class UserData {
     private Boolean passOk;
 
     private List<DatumJobs> jobs;
+
+    private DataCV1 cv1;
+
 
     public Cv2UserData cv2;
 
@@ -116,17 +119,16 @@ public class UserData {
         this.cv3 = cv3;
     }
 
-    private com.example.inin.injob.models.cv1.Data cv1;
 
-    public Data getCv1() {
+    public DataCV1 getCv1() {
         return cv1;
     }
 
-    public void setCv1(Data cv1) {
+    public void setCv1(DataCV1 cv1) {
         this.cv1 = cv1;
     }
 
-    public UserData(Data cv1) {
+    public UserData(DataCV1 cv1) {
         this.cv1 = cv1;
     }
 

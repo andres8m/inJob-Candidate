@@ -18,7 +18,7 @@ public class CvResponse implements Serializable
 
     @SerializedName("data")
     @Expose
-    private Data data;
+    private DataCV1 data;
 
 
     private final static long serialVersionUID = -9191474806409885869L;
@@ -36,7 +36,7 @@ public class CvResponse implements Serializable
      * @param data
      * @param success
      */
-    public CvResponse(Boolean success, String message, Data data) {
+    public CvResponse(Boolean success, String message, DataCV1 data) {
         super();
         this.success = success;
         this.message = message;
@@ -59,11 +59,11 @@ public class CvResponse implements Serializable
         this.message = message;
     }
 
-    public Data getData() {
+    public DataCV1 getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(DataCV1 data) {
         this.data = data;
     }
 

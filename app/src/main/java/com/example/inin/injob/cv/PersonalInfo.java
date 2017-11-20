@@ -5,11 +5,16 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +41,7 @@ import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv1.Cv1UserData;
 import com.example.inin.injob.models.cv1.CvResponse;
+import com.example.inin.injob.models.cv1.DataCV1;
 import com.example.inin.injob.models.cv1.department.DatumDepartment;
 import com.example.inin.injob.models.cv1.department.DepartmentResponse;
 import com.example.inin.injob.models.cv1.town.TownResponse;
@@ -73,6 +79,7 @@ public class PersonalInfo extends Fragment {
     private String[] arrayTown;
     private DepartmentResponse departmentResponse = new DepartmentResponse();
     private TownResponse townResponse = new TownResponse();
+    private Boolean isChangedCv1 = false;
 //    ProgressDialog progress;
     public PersonalInfo() {
         // Required empty public constructor
@@ -185,7 +192,10 @@ public class PersonalInfo extends Fragment {
     }
 
 
+    public void testPost()
+    {
 
+    }
 
 
     public class getTownJson extends AsyncTask<JSONObject,Void,Void>
@@ -328,6 +338,11 @@ public class PersonalInfo extends Fragment {
 
        public void setDataInView(View view)
        {
+
+
+
+
+
            this.arraySpinnerNacionalidades = new String[]{"Guatemalteca", "Mexicana", "Salvadoreña", "Hondureña", "Nicaraguense", "Costaricense",
                    "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
                    "Cubana", "Brasileña","Argentina","Venezolana","Chilena","China","Taiwanesa","Japonesa","Boliviana"};
@@ -345,33 +360,34 @@ public class PersonalInfo extends Fragment {
 
 
 
-           EditText editTextName = view.findViewById(R.id.editTextName);
+           final EditText editTextName = view.findViewById(R.id.editTextName);
            editTextName.setText(UserData.Instance().getCv1().getNombre());
 
-           EditText editTextLName = view.findViewById(R.id.editTextLastName);
+           final EditText editTextLName = view.findViewById(R.id.editTextLastName);
            editTextLName.setText(UserData.Instance().getCv1().getApellido());
 
-           EditText editTextdpi = view.findViewById(R.id.editTextDPI);
+           final EditText editTextdpi = view.findViewById(R.id.editTextDPI);
            editTextdpi.setText(UserData.Instance().getCv1().getIdentificacion());
 
-           EditText editTextcel = view.findViewById(R.id.editTextCell);
+           final EditText editTextcel = view.findViewById(R.id.editTextCell);
            editTextcel.setText(UserData.Instance().getCv1().getCelular());
 
-           EditText editTexttel = view.findViewById(R.id.editTextPhone);
+           final EditText editTexttel = view.findViewById(R.id.editTextPhone);
            editTexttel.setText(UserData.Instance().getCv1().getTelefono());
 
-           EditText editTextDir = view.findViewById(R.id.editTextDireccion);
+           final EditText editTextDir = view.findViewById(R.id.editTextDireccion);
            editTextDir.setText(UserData.Instance().getCv1().getDireccion());
 
-           EditText editTextZona = view.findViewById(R.id.editTextZona);
+           final EditText editTextZona = view.findViewById(R.id.editTextZona);
            editTextZona.setText(UserData.Instance().getCv1().getZona());
+           EditText editTextNac = view.findViewById(R.id.birthday);
+
 
            if(UserData.Instance().getCv1().getNacimiento()!=null)
            {
                Date date = new Date(UserData.Instance().getCv1().getNacimiento());
                SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
                String dateText = df2.format(date);
-               EditText editTextNac = view.findViewById(R.id.birthday);
                editTextNac.setText(dateText);
            }
 
@@ -457,6 +473,152 @@ public class PersonalInfo extends Fragment {
                Picasso.with(context).load("https://www.shareicon.net/data/2016/09/01/822711_user_512x512.png").into(imageView);
            }
 
+           editTextName.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    isChangedCv1 = true;
+               }
+           });
+
+           editTextLName.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+           editTextNac.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+           editTextdpi.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+           editTextcel.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+           editTexttel.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+           editTextDir.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+           editTextZona.addTextChangedListener(new TextWatcher() {
+               @Override
+               public void afterTextChanged(Editable s) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                   // TODO Auto-generated method stub
+               }
+
+               @Override
+               public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   isChangedCv1 = true;
+               }
+           });
+
+
+
+           FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+           fab.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   attemptSaveCv1(editTextLName.getText().toString(),editTextcel.getText().toString(),editTextDir.getText().toString(),editTextdpi.getText().toString(),editTextName.getText().toString(),editTexttel.getText().toString(),editTextZona.getText().toString());
+
+               }
+           });
 
 
        }
@@ -487,5 +649,77 @@ public class PersonalInfo extends Fragment {
                    return 1;
            }
        }
+
+
+    private void attemptSaveCv1(String apellido, String celular, String direccion, String dpi, String nombre, String telefono, String zona) {
+
+        Context context = getActivity();
+        Boolean responseAttempt = false;
+        final ProgressDialog progress = new ProgressDialog(context);
+        progress.setMessage("Guardando información, por favor espere");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+        progress.show();
+        Gson gson = new Gson();
+
+        String url = "https://app.inin.global/api/cv";
+        JSONObject jsonBody = new JSONObject();
+
+        try{
+//            jsonBody.put("apellido", email);
+//            jsonBody.put("password", password);
+            DataCV1 dataCV1 = UserData.Instance().getCv1();
+            dataCV1.setApellido(apellido);
+            dataCV1.setCelular(celular);
+            dataCV1.setDireccion(direccion);
+            dataCV1.setIdentificacion(dpi);
+            dataCV1.setNombre(nombre);
+            dataCV1.setTelefono(telefono);
+            dataCV1.setZona(zona);
+
+            jsonBody = new JSONObject(gson.toJson(dataCV1));
+
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest
+                (Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        progress.dismiss();
+                        Snackbar.make(getView(), "Datos guardados exitosamente!", Snackbar.LENGTH_LONG)
+                                .setAction("Continua en el siguiente paso", null).show();
+
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progress.dismiss();
+                        Context context = getActivity();
+                        Toast toast = Toast.makeText(context, "Error", Toast.LENGTH_SHORT);
+                        toast.show();
+
+                        // TODO Auto-generated method stub
+
+                    }
+                })
+        {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization","Bearer "+UserData.Instance().getToken());
+                //..add other headers
+                return params;
+            }
+        };;
+
+        MySingleton.getInstance(context).addToRequestQueue(jsObjRequest);
+    }
 
 }

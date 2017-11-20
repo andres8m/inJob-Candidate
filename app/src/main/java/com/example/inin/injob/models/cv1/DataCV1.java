@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Data implements Serializable
+public class DataCV1 implements Serializable
 {
 
     @SerializedName("nombre")
@@ -94,7 +94,7 @@ public class Data implements Serializable
      * No args constructor for use in serialization
      * 
      */
-    public Data() {
+    public DataCV1() {
     }
 
     /**
@@ -120,7 +120,7 @@ public class Data implements Serializable
      * @param nacionalidad
      * @param celular
      */
-    public Data(String nombre, String apellido, String direccion, String zona, String celular, String telefono, String genero, Long nacimiento, String licencia, Boolean visa, String foto, Boolean policiacos, Boolean penales, Boolean documento, Long usuario, String identificacion, Integer pais, Long departamento, Long municipio, Integer nacionalidad) {
+    public DataCV1(String nombre, String apellido, String direccion, String zona, String celular, String telefono, String genero, Long nacimiento, String licencia, Boolean visa, String foto, Boolean policiacos, Boolean penales, Boolean documento, Long usuario, String identificacion, Integer pais, Long departamento, Long municipio, Integer nacionalidad) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
