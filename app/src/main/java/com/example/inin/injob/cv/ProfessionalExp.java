@@ -91,6 +91,9 @@ public class ProfessionalExp extends DialogFragment {
                         progress.dismiss();
                         Snackbar.make(getView(), "Experiencia guardada exitosamente", Snackbar.LENGTH_LONG)
                                 .setAction("", null).show();
+                        ((ProfessionalExperienceList)getParentFragment()).getCV();
+
+
                         dismiss();
 
 

@@ -140,7 +140,7 @@ public class ProfessionalExperienceList extends Fragment {
 
 
 
-    private void getCV() {
+    public void getCV() {
         String url = "https://app.inin.global/api/cv/professional";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
