@@ -6,12 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -41,6 +43,12 @@ public class AcademicExperienceList extends Fragment {
         // Required empty public constructor
     }
 
+    void showDialog()
+    {
+        FragmentManager fm = getChildFragmentManager();
+        AcademicExp editNameDialogFragment = AcademicExp.newInstance();
+        editNameDialogFragment.show(fm, "fragment_edit_name");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +61,18 @@ public class AcademicExperienceList extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getCV();
+
+
+        Button addBtn = (Button) getView().findViewById(R.id.addAcademicBtn);
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+
+                showDialog();
+
+            }
+        });
+
     }
 
     public void setDataToView()
