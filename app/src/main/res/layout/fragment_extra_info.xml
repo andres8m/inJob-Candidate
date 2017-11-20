@@ -32,10 +32,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:layout_marginTop="15dp"
                         android:text="Información extra"
                         android:textAlignment="center"
-                        android:textSize="30sp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -46,7 +45,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:text="En esta sección puedes cargar un vínculo a un vídeo de presentación y darte a conocer mejor a los empleadores que verán tu currículum"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="12sp" />
 
                 </RelativeLayout>
 
