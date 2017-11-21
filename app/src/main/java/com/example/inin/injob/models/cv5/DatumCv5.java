@@ -11,30 +11,39 @@ public class DatumCv5 implements Serializable
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("languajeId")
     @Expose
     private Integer languajeId;
+
     @SerializedName("materno")
     @Expose
     private Boolean materno;
+
     @SerializedName("comprensionAuditiva")
     @Expose
     private Integer comprensionAuditiva;
+
     @SerializedName("comprensionLectora")
     @Expose
     private Integer comprensionLectora;
+
     @SerializedName("interaccionOral")
     @Expose
     private Integer interaccionOral;
+
     @SerializedName("expresionOral")
     @Expose
     private Integer expresionOral;
+
     @SerializedName("expresionEscrita")
     @Expose
     private Integer expresionEscrita;
+
     @SerializedName("languaje")
     @Expose
     private Languaje languaje;
+
     private final static long serialVersionUID = 459172166519189462L;
 
     /**
