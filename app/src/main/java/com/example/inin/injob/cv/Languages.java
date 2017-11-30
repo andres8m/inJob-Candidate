@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,6 +42,20 @@ public class Languages extends DialogFragment {
     private String [] arraySpinnerCountry;
     private Button buttonSaveLanguage;
     Spinner spinnerExtraLanguage;
+
+    RatingBar comprensionAuditiva;
+    RatingBar comprensionLectora;
+    RatingBar expresionEscrita;
+    RatingBar expresionOral;
+    RatingBar interaccionOral;
+
+    Float comprensionAuditivaValue;
+    Float comprensionLectoraValue;
+    Float expresionEscritaValue;
+    Float expresionOralValue;
+    Float interaccionOralValue;
+
+
     public Languages() {
         // Required empty public constructor
     }
@@ -71,22 +87,39 @@ public class Languages extends DialogFragment {
         this.arraySpinnerCountry = new String[]{"Español", "Inglés", "Frances", "Aleman","Italiano","Portugués","Japonés","Mandarín","Coreano","Ruso","Otro"};
         buttonSaveLanguage = view.findViewById(R.id.saveBtn);
 
-        Spinner s = (Spinner) view.findViewById(R.id.maternal);
+//        Spinner s = (Spinner) view.findViewById(R.id.maternal);
         spinnerExtraLanguage = (Spinner) view.findViewById(R.id.extra);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
                 android.R.layout.simple_spinner_item, arraySpinnerCountry);
-        s.setAdapter(adapter);
+//        s.setAdapter(adapter);
         spinnerExtraLanguage.setAdapter(adapter);
+
+        comprensionAuditiva = view.findViewById(R.id.comprensionAuditiva);
+        comprensionLectora = view.findViewById(R.id.comprensionLectora);
+        expresionEscrita = view.findViewById(R.id.expresionEscrita);
+        expresionOral = view.findViewById(R.id.expresionOral);
+        interaccionOral = view.findViewById(R.id.interaccionOral);
 
         buttonSaveLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Integer myValue = spinnerExtraLanguage.getSelectedItemPosition()+1;
+                Integer languageSelected = spinnerExtraLanguage.getSelectedItemPosition()+1;
 //                attemptSaveCv1(editTextLName.getText().toString(),editTextcel.getText().toString(),editTextDir.getText().toString(),editTextdpi.getText().toString(),editTextName.getText().toString(),editTexttel.getText().toString(),editTextZona.getText().toString());
-                Snackbar.make(view, String.valueOf(myValue), Snackbar.LENGTH_LONG)
-                        .setAction("Continua en el siguiente paso", null).show();
+//                Snackbar.make(view, String.valueOf(myValue), Snackbar.LENGTH_LONG)
+//                        .setAction("Continua en el siguiente paso", null).show();
+
+                comprensionAuditivaValue  =    comprensionAuditiva.getRating() *2;
+                comprensionLectoraValue   =     comprensionLectora.getRating() *2;
+                expresionEscritaValue     =       expresionEscrita.getRating() *2;
+                expresionOralValue        =          expresionOral.getRating() *2;
+                interaccionOralValue      =        interaccionOral.getRating() *2;
+
+                attemptSaveCv5(Math.round(comprensionAuditivaValue*10), Math.round(comprensionLectoraValue*10), Math.round(expresionEscritaValue*10),Math.round(expresionOralValue*10),Math.round(interaccionOralValue*10),languageSelected);
+
+
             }
         });
+
 
     }
 
@@ -114,7 +147,7 @@ public class Languages extends DialogFragment {
             dataCV5.setExpresionEscrita(escrita);
             dataCV5.setExpresionOral(exprOral);
             dataCV5.setInteraccionOral(interOral);
-            dataCV5.setId(languageId);
+            dataCV5.setLanguajeId(languageId);
             jsonBody = new JSONObject(gson.toJson(dataCV5));
 
         }
@@ -131,6 +164,9 @@ public class Languages extends DialogFragment {
                         progress.dismiss();
                         Snackbar.make(getView(), "Idioma guardado exitosamente!", Snackbar.LENGTH_LONG)
                                 .setAction("Continua en el siguiente paso", null).show();
+                        ((LanguagesList)getParentFragment()).getCV();
+                        dismiss();
+
 
 
                     }
@@ -140,8 +176,10 @@ public class Languages extends DialogFragment {
                     public void onErrorResponse(VolleyError error) {
                         progress.dismiss();
                         Context context = getActivity();
-                        Toast toast = Toast.makeText(context, "Error", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(context, error.networkResponse.data.toString(), Toast.LENGTH_SHORT);
                         toast.show();
+                        error.printStackTrace();
+                        Log.d("LanguagePOST", ""+Math.round(comprensionAuditivaValue*10));
 
                         // TODO Auto-generated method stub
 

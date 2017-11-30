@@ -15,22 +15,6 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:labelFor="@id/maternal"
-                android:text="¿Cuál es tu idioma materno? " />
-
-            <Spinner
-                android:id="@+id/maternal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                android:tooltipText="" />
-
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
@@ -52,11 +36,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:labelFor="@id/ratingBar"
+                android:labelFor="@id/comprensionAuditiva"
                 android:text="¿Cuánto comprendes al escucharlo?" />
 
             <RatingBar
-                android:id="@+id/ratingBar"
+                android:id="@+id/comprensionAuditiva"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5" />
@@ -70,7 +54,7 @@
                 android:text="¿Cuánto comprendes al leerlo?" />
 
             <RatingBar
-                android:id="@+id/ratingBar2"
+                android:id="@+id/comprensionLectora"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5" />
@@ -84,7 +68,7 @@
                 android:text="¿Qué tan bien puedes hablarlo?" />
 
             <RatingBar
-                android:id="@+id/ratingBar3"
+                android:id="@+id/expresionOral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5" />
@@ -98,7 +82,7 @@
                 android:text="¿Qué tan bien puedes llevar una conversacion?" />
 
             <RatingBar
-                android:id="@+id/ratingBar4"
+                android:id="@+id/interaccionOral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5" />
@@ -112,7 +96,7 @@
                 android:text="¿Qué tan bien puedes escribirlo?" />
 
             <RatingBar
-                android:id="@+id/ratingBar5"
+                android:id="@+id/expresionEscrita"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5" />

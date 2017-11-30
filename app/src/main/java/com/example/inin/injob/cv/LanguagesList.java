@@ -85,7 +85,7 @@ public class LanguagesList extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
     }
 
-    private void getCV() {
+    public void getCV() {
         String url = "https://app.inin.global/api/cv/languages";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
