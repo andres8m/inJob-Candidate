@@ -158,10 +158,10 @@ public class AcademicExp extends DialogFragment {
         final EditText editTextStart = view.findViewById(R.id.startDate);
         final Button button = view.findViewById(R.id.saveBtn);
 
-        this.arraySpinnerDegree = new String[]{"Doctorado","Maestria", "Tecnico Superior", "Tecnico", "Preparatoria",
-                "Secundaria", "Primaria", "Primaria inconclusa"};
+        this.arraySpinnerDegree = new String[]{"Doctorado","Maestría","Profesional", "Técnico Superior", "Técnico", "Preparatoria",
+                "Secundaria", "Primaria", "Primaria Inconclusa"};
 
-        Spinner s3 = (Spinner) view.findViewById(R.id.spinnerGrado);
+        final Spinner s3 = (Spinner) view.findViewById(R.id.spinnerGrado);
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
                 android.R.layout.simple_spinner_item, arraySpinnerDegree);
         s3.setAdapter(adapter3);
@@ -173,6 +173,7 @@ public class AcademicExp extends DialogFragment {
 
                 Long timeInMillisecondsStart = null;
                 Long timeInMillisecondsEnd = null;
+                Integer degreeSelected = null;
 
                 String givenDateString = editTextStart.getText().toString();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
@@ -194,8 +195,10 @@ public class AcademicExp extends DialogFragment {
                     e.printStackTrace();
                 }
 
+                degreeSelected = s3.getSelectedItemPosition()+1;
 
-                attemptSaveCv4(editTextTitulo.getText().toString(),new Long(3),timeInMillisecondsStart,timeInMillisecondsEnd,editTextInstitucion.getText().toString(),new Long(5));
+
+                attemptSaveCv4(editTextTitulo.getText().toString(),new Long(3),timeInMillisecondsStart,timeInMillisecondsEnd,editTextInstitucion.getText().toString(),new Long(degreeSelected));
 
 
 
