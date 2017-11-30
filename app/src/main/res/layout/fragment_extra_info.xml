@@ -63,7 +63,7 @@
                 android:text="Link de video" />
 
             <EditText
-                android:id="@+id/birthday"
+                android:id="@+id/videoEdtTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
