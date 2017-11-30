@@ -70,6 +70,7 @@ public class PersonalInfo extends Fragment {
     Spinner s;
     Spinner spinnerNacionalidades;
     Spinner spinnerVisa;
+    Spinner spinnerLicencia;
     private String[] arraySpinnerGenero;
 
     private String[] arraySpinnerNacionalidades;
@@ -343,6 +344,48 @@ public class PersonalInfo extends Fragment {
         }
     }
 
+    public String getLicenseValue(String request)
+    {
+        switch (request)
+        {
+            case "No poseo Licencia de Conducir":
+                return "N";
+            case "Liviana":
+                return "C";
+            case "Comercial":
+                return "B";
+            case "Profesional":
+                return "A";
+            case "Motocicleta":
+                return "M";
+            case "Maquinaria Agrícola":
+                return "E";
+            default:
+                return "Invalid";
+        }
+    }
+
+    public int getLicenseIndexByValue(String request)
+    {
+        switch (request)
+        {
+            case "N":
+                return 0;
+            case "C":
+                return 1;
+            case "B":
+                return 2;
+            case "A":
+                return 3;
+            case "M":
+                return 4;
+            case "E":
+                return 5;
+            default:
+                return 0;
+        }
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
 
@@ -354,8 +397,8 @@ public class PersonalInfo extends Fragment {
                    "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
                    "Cubana", "Brasileña","Argentina","Venezolana","Chilena","China","Taiwanesa","Japonesa","Boliviana"};
 
-           this.arraySpinnerLicencia = new String[]{"No poseo Licencia de Conducir","Liviana", "Comercial", "Profesional", "Motocicleta",
-                   "Maquinaria Agrícola"};
+           this.arraySpinnerLicencia = new String[]{"No poseo Licencia de Conducir","Liviana", "Comercial", "Profesional",
+                   "Motocicleta", "Maquinaria Agrícola"};
 
            this.arraySpinnerVisa = new String[]{"Si", "No"};
 
@@ -430,12 +473,12 @@ public class PersonalInfo extends Fragment {
                spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
            }
 
-           Spinner s3 = (Spinner) view.findViewById(R.id.licencia);
+           spinnerLicencia = (Spinner) view.findViewById(R.id.licencia);
            ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerLicencia);
-           s3.setAdapter(adapter3);
-           s3.setSelection(getLicenseIndex(UserData.Instance().getCv1().getLicencia()));
-//        s3.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
+           spinnerLicencia.setAdapter(adapter3);
+           spinnerLicencia.setSelection(getLicenseIndexByValue(UserData.Instance().getCv1().getLicencia()));
+//        spinnerLicencia.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
 
            spinnerVisa = (Spinner) view.findViewById(R.id.visa);
            ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(),
@@ -475,7 +518,7 @@ public class PersonalInfo extends Fragment {
            Context context = getActivity();
            if(UserData.Instance().getCv1().getFoto()!=null)
            {
-               Picasso.with(context).load("https://s3.amazonaws.com/rrhh-images/cv/photo/"+UserData.Instance().getCv1().getFoto()).into(imageView);
+               Picasso.with(context).load("https://spinnerLicencia.amazonaws.com/rrhh-images/cv/photo/"+UserData.Instance().getCv1().getFoto()).into(imageView);
            }
            else {
                Picasso.with(context).load("https://www.shareicon.net/data/2016/09/01/822711_user_512x512.png").into(imageView);
@@ -706,6 +749,8 @@ public class PersonalInfo extends Fragment {
             else {
                 dataCV1.setGenero("M");
             }
+
+            dataCV1.setLicencia(getLicenseValue(spinnerLicencia.getSelectedItem().toString()));
 
 
             jsonBody = new JSONObject(gson.toJson(dataCV1));
