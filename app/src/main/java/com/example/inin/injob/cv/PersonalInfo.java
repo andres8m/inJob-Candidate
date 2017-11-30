@@ -55,6 +55,7 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +67,8 @@ public class PersonalInfo extends Fragment {
 //    Context context = this.getActivity();
 //    Toast toast = Toast.makeText(context, "Exito", Toast.LENGTH_SHORT);
 
-
+    Spinner s;
+    Spinner spinnerNacionalidades;
     private String[] arraySpinnerGenero;
 
     private String[] arraySpinnerNacionalidades;
@@ -345,12 +347,7 @@ public class PersonalInfo extends Fragment {
 
        }
 
-       public void setDataInView(View view)
-       {
-
-
-
-
+       public void setDataInView(View view) {
 
            this.arraySpinnerNacionalidades = new String[]{"Guatemalteca", "Mexicana", "Salvadoreña", "Hondureña", "Nicaraguense", "Costaricense",
                    "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
@@ -415,21 +412,21 @@ public class PersonalInfo extends Fragment {
            }
 
 
-           Spinner s = (Spinner) view.findViewById(R.id.generos);
+           s = (Spinner) view.findViewById(R.id.generos);
            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerGenero);
            s.setAdapter(adapter);
 
-           Spinner s2 = (Spinner) view.findViewById(R.id.nacionalidad);
+           final Spinner spinnerNacionalidades = (Spinner) view.findViewById(R.id.nacionalidad);
            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
-           s2.setAdapter(adapter2);
-           s2.setSelection(UserData.Instance().getCv1().getNacionalidad());
+           spinnerNacionalidades.setAdapter(adapter2);
+           spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad());
 
 
            if(UserData.Instance().getCv1().getNacionalidad()!=null)
            {
-               s2.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
+               spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
            }
 
            Spinner s3 = (Spinner) view.findViewById(R.id.licencia);
@@ -624,7 +621,9 @@ public class PersonalInfo extends Fragment {
            fab.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   attemptSaveCv1(editTextLName.getText().toString(),editTextcel.getText().toString(),editTextDir.getText().toString(),editTextdpi.getText().toString(),editTextName.getText().toString(),editTexttel.getText().toString(),editTextZona.getText().toString());
+                   attemptSaveCv1(editTextLName.getText().toString(),editTextcel.getText().toString(),editTextDir.getText().toString(),
+                           editTextdpi.getText().toString(),editTextName.getText().toString(),editTexttel.getText().toString(),
+                           editTextZona.getText().toString(), spinnerNacionalidades.getSelectedItemPosition()+1);
 
                }
            });
@@ -660,7 +659,9 @@ public class PersonalInfo extends Fragment {
        }
 
 
-    private void attemptSaveCv1(String apellido, String celular, String direccion, String dpi, String nombre, String telefono, String zona) {
+    private void attemptSaveCv1(String apellido, String celular, String direccion, String dpi, String nombre,
+                                String telefono, String zona, int citizenship)
+    {
 
         Context context = getActivity();
         Boolean responseAttempt = false;
@@ -685,6 +686,16 @@ public class PersonalInfo extends Fragment {
             dataCV1.setNombre(nombre);
             dataCV1.setTelefono(telefono);
             dataCV1.setZona(zona);
+            dataCV1.setNacionalidad(citizenship);
+
+            if(s.getSelectedItem().toString().equals("Masculino"))
+            {
+                dataCV1.setGenero("H");
+            }
+            else {
+                dataCV1.setGenero("M");
+            }
+
 
             jsonBody = new JSONObject(gson.toJson(dataCV1));
 
