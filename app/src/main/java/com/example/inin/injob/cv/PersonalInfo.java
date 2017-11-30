@@ -69,6 +69,7 @@ public class PersonalInfo extends Fragment {
 
     Spinner s;
     Spinner spinnerNacionalidades;
+    Spinner spinnerVisa;
     private String[] arraySpinnerGenero;
 
     private String[] arraySpinnerNacionalidades;
@@ -417,7 +418,7 @@ public class PersonalInfo extends Fragment {
                    android.R.layout.simple_spinner_item, arraySpinnerGenero);
            s.setAdapter(adapter);
 
-           final Spinner spinnerNacionalidades = (Spinner) view.findViewById(R.id.nacionalidad);
+           spinnerNacionalidades = (Spinner) view.findViewById(R.id.nacionalidad);
            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
            spinnerNacionalidades.setAdapter(adapter2);
@@ -436,22 +437,23 @@ public class PersonalInfo extends Fragment {
            s3.setSelection(getLicenseIndex(UserData.Instance().getCv1().getLicencia()));
 //        s3.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
 
-           Spinner s4 = (Spinner) view.findViewById(R.id.visa);
+           spinnerVisa = (Spinner) view.findViewById(R.id.visa);
            ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerVisa);
-           s4.setAdapter(adapter4);
+           spinnerVisa.setAdapter(adapter4);
 
            if(UserData.Instance().getCv1().getVisa()!=null)
            {
                if(UserData.Instance().getCv1().getVisa() )
-               {s4.setSelection(0);
+               {
+                   spinnerVisa.setSelection(0);
                }
                else {
-                   s4.setSelection(1);
+                   spinnerVisa.setSelection(1);
                }
            }
            else {
-               s4.setSelection(1);
+               spinnerVisa.setSelection(1);
            }
 
 
@@ -687,6 +689,15 @@ public class PersonalInfo extends Fragment {
             dataCV1.setTelefono(telefono);
             dataCV1.setZona(zona);
             dataCV1.setNacionalidad(citizenship);
+
+            if(spinnerVisa.getSelectedItemPosition()==0)
+            {
+                dataCV1.setVisa(true);
+            }
+            else
+            {
+                dataCV1.setVisa(false);
+            }
 
             if(s.getSelectedItem().toString().equals("Masculino"))
             {
