@@ -3,6 +3,7 @@ package com.example.inin.injob.models;
 
 import com.example.inin.injob.models.cv1.DataCV1;
 import com.example.inin.injob.models.cv2.Cv2UserData;
+import com.example.inin.injob.models.cv2.catalog.Datum;
 import com.example.inin.injob.models.cv3.DatumCv3;
 import com.example.inin.injob.models.cv4.DatumCv4;
 import com.example.inin.injob.models.cv5.DatumCv5;
@@ -20,6 +21,16 @@ public class UserData {
 
     private static UserData instance;
 
+
+    private List<Datum> catalogJobs;
+
+    public List<Datum> getCatalogJobs() {
+        return catalogJobs;
+    }
+
+    public void setCatalogJobs(List<Datum> catalogJobs) {
+        this.catalogJobs = catalogJobs;
+    }
 
     private String token;
 

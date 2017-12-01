@@ -64,10 +64,13 @@ public class JobInterest extends Fragment {
                     interests.add(x.getName());
                 }
 
+                List<DatumCv2> cv2s = new ArrayList<>();
 
                 final ArrayAdapter<String> arrayAdapterInterests = new ArrayAdapter<String>(
                         context, android.R.layout.simple_list_item_1, interests);
                 listViewInterests.setAdapter(arrayAdapterInterests);
+
+
 
                 searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                     @Override

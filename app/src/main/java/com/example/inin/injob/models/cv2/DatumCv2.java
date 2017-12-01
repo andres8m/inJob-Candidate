@@ -11,15 +11,19 @@ public class DatumCv2 implements Serializable
     @SerializedName("id")
     @Expose
     private Integer id;
+
     @SerializedName("curriculum")
     @Expose
     private Integer curriculum;
+
     @SerializedName("job")
     @Expose
     private Integer job;
+
     @SerializedName("name")
     @Expose
     private String name;
+
     private final static long serialVersionUID = 5204948185687802888L;
 
     /**

@@ -6,8 +6,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +37,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.example.inin.injob.Dashboard;
 import com.example.inin.injob.MainActivity;
 import com.example.inin.injob.MySingleton;
@@ -52,6 +57,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,6 +66,8 @@ import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,6 +80,8 @@ public class PersonalInfo extends Fragment {
     Spinner spinnerNacionalidades;
     Spinner spinnerVisa;
     Spinner spinnerLicencia;
+
+    String urlImage = "https://app.inin.global/api/cv/photo";
 
 
 
@@ -88,6 +98,7 @@ public class PersonalInfo extends Fragment {
     private DepartmentResponse departmentResponse = new DepartmentResponse();
     private TownResponse townResponse = new TownResponse();
     private Boolean isChangedCv1 = false;
+    Bitmap bitmap;
 //    ProgressDialog progress;
     public PersonalInfo() {
         // Required empty public constructor
@@ -102,6 +113,88 @@ public class PersonalInfo extends Fragment {
         return inflater.inflate(R.layout.fragment_personal_info, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Button button  = (Button)view.findViewById(R.id.myButtonSaveImg);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent,"Selecciona imagén"),999);
+            }
+        });
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==999 && resultCode== RESULT_OK && data!=null)
+        {
+            try{
+                Uri filepath = data.getData();
+                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),filepath);
+                uploadImage();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    public String getStringImage(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byte [] imageByte = byteArrayOutputStream.toByteArray();
+        String encode = Base64.encodeToString(imageByte,Base64.DEFAULT);
+        return encode;
+    }
+
+    public void uploadImage()
+    {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlImage, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                String image = getStringImage(bitmap);
+
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("file", image);
+
+                return params;
+
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization","Bearer "+UserData.Instance().getToken());
+                //..add other headers
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(this.getActivity()).addToRequestQueue(stringRequest);
+
+    }
 
     private void getCV()
     {
@@ -197,12 +290,6 @@ public class PersonalInfo extends Fragment {
         };
 
         MySingleton.getInstance(this.getContext()).addToRequestQueue(jsObjRequest);
-    }
-
-
-    public void testPost()
-    {
-
     }
 
 
@@ -390,20 +477,7 @@ public class PersonalInfo extends Fragment {
         }
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        Button button  = (Button)view.findViewById(R.id.myButtonSaveImg);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-    }
 
     public void setDataInView(View view) {
 
