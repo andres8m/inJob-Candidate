@@ -518,7 +518,7 @@ public class PersonalInfo extends Fragment {
            Context context = getActivity();
            if(UserData.Instance().getCv1().getFoto()!=null)
            {
-               Picasso.with(context).load("https://spinnerLicencia.amazonaws.com/rrhh-images/cv/photo/"+UserData.Instance().getCv1().getFoto()).into(imageView);
+               Picasso.with(context).load("https://s3.amazonaws.com/rrhh-images/cv/photo/"+UserData.Instance().getCv1().getFoto()).into(imageView);
            }
            else {
                Picasso.with(context).load("https://www.shareicon.net/data/2016/09/01/822711_user_512x512.png").into(imageView);
