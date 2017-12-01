@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -71,6 +72,9 @@ public class PersonalInfo extends Fragment {
     Spinner spinnerNacionalidades;
     Spinner spinnerVisa;
     Spinner spinnerLicencia;
+
+
+
     private String[] arraySpinnerGenero;
 
     private String[] arraySpinnerNacionalidades;
@@ -387,11 +391,21 @@ public class PersonalInfo extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-       }
+        Button button  = (Button)view.findViewById(R.id.myButtonSaveImg);
 
-       public void setDataInView(View view) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
+
+    public void setDataInView(View view) {
 
            this.arraySpinnerNacionalidades = new String[]{"Guatemalteca", "Mexicana", "Salvadoreña", "Hondureña", "Nicaraguense", "Costaricense",
                    "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
@@ -405,7 +419,6 @@ public class PersonalInfo extends Fragment {
            this.arraySpinnerCountry = new String[]{"Guatemala","El Salvador","Honduras",
                    "Nicaragua","Costa Rica", "México", "Colombia", "Venezuela","Ecuador",
                     "Perú","Argentina","Chile","Panamá","España"};
-
 
 
 
