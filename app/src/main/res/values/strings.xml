@@ -44,5 +44,7 @@ Una vez termines de llenar tu CV se enviará a tu correo un link para que te pue
         Registrate en inin.global
         </a>
     </string>
+    <string name="email">Correo Electronico</string>
+    <string name="newReference">Agregar nueva referencia</string>
 
 </resources>

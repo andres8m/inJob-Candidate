@@ -6,12 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -52,9 +54,28 @@ public class ReferencesList extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getCV();
+
+        Button addReferenceButton = view.findViewById(R.id.addReference);
+
+        addReferenceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                showDialog();
+
+            }
+        });
+
     }
 
-    private void getCV() {
+    void showDialog()
+    {
+        FragmentManager fm = getChildFragmentManager();
+        PersonalReference editNameDialogFragment = PersonalReference.newInstance();
+        editNameDialogFragment.show(fm, "fragment_add_reference");
+    }
+
+    public void getCV() {
         String url = "https://app.inin.global/api/cv/references";
 
         JsonObjectRequest jsObjRequest = new JsonObjectRequest

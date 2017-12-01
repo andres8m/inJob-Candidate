@@ -58,18 +58,12 @@
                         android:layout_width="168dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
-                        android:text="Añadir referencia profesional"
+                        android:text="@string/newReference"
                         android:textAlignment="center"
                         android:textSize="10sp"
-                        android:theme="@style/PrimaryFlatButton" />
+                        android:theme="@style/PrimaryFlatButton"
+                        android:id="@+id/addReference"/>
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Añadir referencia personal"
-                        android:textSize="10sp"
-                        android:theme="@style/PrimaryFlatButton" />
                 </LinearLayout>
 
             </RelativeLayout>
