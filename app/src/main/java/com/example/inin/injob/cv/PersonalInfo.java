@@ -47,6 +47,7 @@ import com.example.inin.injob.MySingleton;
 import com.example.inin.injob.PathUtil;
 import com.example.inin.injob.R;
 import com.example.inin.injob.StepsFragment;
+import com.example.inin.injob.data.remote.RetrofitClient;
 import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv1.Cv1UserData;
@@ -124,7 +125,7 @@ public class PersonalInfo extends Fragment {
     private DepartmentResponse departmentResponse = new DepartmentResponse();
     private TownResponse townResponse = new TownResponse();
     private Boolean isChangedCv1 = false;
-    Bitmap bitmap;
+//    Bitmap bitmap;
 //    ProgressDialog progress;
     public PersonalInfo() {
         // Required empty public constructor
@@ -197,7 +198,7 @@ public class PersonalInfo extends Fragment {
                 fileType = cR.getType(filepath);
                 uploadFile(filepath,fileType);
 
-                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),filepath);
+//                bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),filepath);
 
 
 
@@ -235,11 +236,11 @@ public class PersonalInfo extends Fragment {
 
         MultipartBody.Part file = MultipartBody.Part.createFormData("file", originalFile.getName(),filePart);
 
-        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://app.inin.global/api/cv/").addConverterFactory(GsonConverterFactory.create());
+//        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://app.inin.global/api/cv/").addConverterFactory(GsonConverterFactory.create());
 
-        Retrofit retrofit = builder.build();
+//        Retrofit retrofit = builder.build();
 
-        FileUploadService client = retrofit.create(FileUploadService.class);
+        FileUploadService client = RetrofitClient.getClient("https://app.inin.global/api/cv/").create(FileUploadService.class);
         Call<ResponseBody> call = null;
         switch (selectedImageType)
         {

@@ -31,16 +31,6 @@
 
 
                     <TextView
-                        android:id="@+id/person_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:text="Datos Personales"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <TextView
                         android:id="@+id/person_age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -106,7 +96,8 @@
                         android:layout_centerInParent="true"
                         android:gravity="center"
                         android:text="@string/upload_image"
-                        android:theme="@style/PrimaryFlatButton" />
+                        android:theme="@style/PrimaryFlatButton"
+                        android:visibility="gone" />
 
                     <!--<Button-->
                     <!--android:layout_width="wrap_content"-->
