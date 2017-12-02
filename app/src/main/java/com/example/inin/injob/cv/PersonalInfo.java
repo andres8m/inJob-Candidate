@@ -3,6 +3,7 @@ package com.example.inin.injob.cv;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +41,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.inin.injob.Dashboard;
+import com.example.inin.injob.FileUploadService;
 import com.example.inin.injob.MainActivity;
 import com.example.inin.injob.MySingleton;
+import com.example.inin.injob.PathUtil;
 import com.example.inin.injob.R;
 import com.example.inin.injob.StepsFragment;
 import com.example.inin.injob.models.LoginResponse;
@@ -54,11 +58,18 @@ import com.example.inin.injob.models.cv1.town.TownResponse;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,6 +77,15 @@ import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -80,6 +100,12 @@ public class PersonalInfo extends Fragment {
     Spinner spinnerNacionalidades;
     Spinner spinnerVisa;
     Spinner spinnerLicencia;
+
+    Button buttonDPI;
+    Button buttonPenales;
+    Button buttonPoliciacos;
+    int selectedImageType=0;
+
 
     String urlImage = "https://app.inin.global/api/cv/photo";
 
@@ -117,15 +143,42 @@ public class PersonalInfo extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button button  = (Button)view.findViewById(R.id.myButtonSaveImg);
+        buttonDPI        = (Button)view.findViewById(R.id.uploadImageDPI);
+        buttonPenales    = (Button)view.findViewById(R.id.uploadPenalesButton);
+        buttonPoliciacos = (Button)view.findViewById(R.id.uploadPoliciacosButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+
+        buttonDPI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                    selectedImageType = 1;
                     Intent intent = new Intent();
                     intent.setType("image/*");
                     intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent,"Selecciona imagén"),999);
+                    startActivityForResult(Intent.createChooser(intent,"Selecciona imagen"),999);
+            }
+        });
+
+        buttonPenales.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedImageType = 2;
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Selecciona imagen"),999);
+            }
+        });
+
+        buttonPoliciacos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedImageType = 3;
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Selecciona imagen"),999);
             }
         });
 
@@ -135,12 +188,19 @@ public class PersonalInfo extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        String fileType;
         if(requestCode==999 && resultCode== RESULT_OK && data!=null)
         {
             try{
+                ContentResolver cR = getContext().getContentResolver();
                 Uri filepath = data.getData();
+                fileType = cR.getType(filepath);
+                uploadFile(filepath,fileType);
+
                 bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),filepath);
-                uploadImage();
+
+
+
             }
             catch (Exception e)
             {
@@ -150,51 +210,88 @@ public class PersonalInfo extends Fragment {
         }
     }
 
-    public String getStringImage(Bitmap bitmap)
-    {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-        byte [] imageByte = byteArrayOutputStream.toByteArray();
-        String encode = Base64.encodeToString(imageByte,Base64.DEFAULT);
-        return encode;
+
+
+    private void uploadFile(Uri fileUri, String fileType) {
+
+//        try {
+//             originalFile = new File(new URI(fileUri.getPath()));
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        }
+        File  originalFile=null;
+        String filePath="";
+        try {
+             filePath= PathUtil.getPath(getContext(),fileUri);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+
+        originalFile = new File(filePath);
+
+
+
+        RequestBody filePart = RequestBody.create(MediaType.parse(fileType),originalFile);
+
+        MultipartBody.Part file = MultipartBody.Part.createFormData("file", originalFile.getName(),filePart);
+
+        Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://app.inin.global/api/cv/").addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        FileUploadService client = retrofit.create(FileUploadService.class);
+        Call<ResponseBody> call = null;
+        switch (selectedImageType)
+        {
+            case 1:
+                call = client.uploadDPI(file,"Bearer "+UserData.Instance().getToken());
+                break;
+            case 2:
+                call = client.uploadCriminalRecords(file,"Bearer "+UserData.Instance().getToken());
+                break;
+            case 3:
+                call = client.uploadPoliceRecords(file,"Bearer "+UserData.Instance().getToken());
+                break;
+            default:
+                call = client.uploadDPI(file,"Bearer "+UserData.Instance().getToken());
+                break;
+        }
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+//                Toast toast = Toast.makeText(getActivity(), response.message(), Toast.LENGTH_LONG);
+//                toast.show();
+
+                if(response.code()==200)
+                {
+                    Snackbar.make(getView(), "¡Imagen guardada exitosamente!", Snackbar.LENGTH_LONG)
+                            .setAction("", null).show();
+                }
+                else if(response.code()==413)
+                {
+                    Snackbar.make(getView(), "¡Imagen demasiado grande, por favor selecciona una imagen más pequeña!", Snackbar.LENGTH_LONG)
+                            .setAction("", null).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+                    Snackbar.make(getView(), "Lo sentimos, ¡por favor intente en un momento de nuevo!", Snackbar.LENGTH_LONG)
+                            .setAction("", null).show();
+
+//                Toast toast = Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG);
+//                toast.show();
+
+            }
+        });
+
     }
 
-    public void uploadImage()
-    {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlImage, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                String image = getStringImage(bitmap);
-
-                Map<String,String> params = new HashMap<String,String>();
-                params.put("file", image);
-
-                return params;
-
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("Authorization","Bearer "+UserData.Instance().getToken());
-                //..add other headers
-                return params;
-            }
-        };
-
-        MySingleton.getInstance(this.getActivity()).addToRequestQueue(stringRequest);
-
-    }
 
     private void getCV()
     {
