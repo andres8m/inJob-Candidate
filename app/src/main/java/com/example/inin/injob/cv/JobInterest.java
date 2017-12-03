@@ -37,8 +37,25 @@ import java.util.Map;
  */
 public class JobInterest extends Fragment {
 
+    ListView listViewInterests;
+    SearchView searchView;
+
+
     public JobInterest() {
         // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.fragment_job_interest, container, false);
+
+        listViewInterests = root.findViewById(R.id.interestListView);
+        searchView = root.findViewById(R.id.searchTxt);
+        getCV();
+        return root;
     }
 
     public class parseJson extends AsyncTask<JSONObject,Void,Void>
@@ -53,11 +70,9 @@ public class JobInterest extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
 
-            if(getView()!=null)
-            {
-                ListView listViewInterests = getView().findViewById(R.id.interestListView);
+
+
                 List<String> interests = new ArrayList<>();
-                SearchView searchView = getView().findViewById(R.id.searchTxt);
 
                 for(DatumCv2 x :  UserData.Instance().getCv2().getInterests())
                 {
@@ -84,7 +99,7 @@ public class JobInterest extends Fragment {
                         return false;
                     }
                 });
-            }
+
 
 
 
@@ -163,41 +178,12 @@ public class JobInterest extends Fragment {
 
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_job_interest, container, false);
-    }
+
 
 
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
-//        List<String> interests = new ArrayList<>();
-//        interests.add("Java Developer");
-//        interests.add("JavaScript Developer");
-//        interests.add("Scala Developer");
-//        interests.add("Kotlin Developer");
-//        interests.add("Android Developer");
-//        ListView lv = (ListView) view.findViewById(R.id.interestListView);
-//        ListView lv2 = (ListView) view.findViewById(R.id.competenciastListView);
-//
-//
-//        ArrayAdapter<String> arrayAdapterInterests = new ArrayAdapter<String>(
-//                this.getActivity(), android.R.layout.simple_list_item_1, interests);
-//        lv.setAdapter(arrayAdapterInterests);
-
-//        List<String> competences = new ArrayList<>();
-//        competences.add("Capacidad de Organizacion y planificacion");
-//        competences.add("Comunicacion oral y escrita");
-//        competences.add("Resolucion de Problemas");
-//
-//        ArrayAdapter<String> arrayAdapterCompetences= new ArrayAdapter<String>(
-//                this.getActivity(), android.R.layout.simple_list_item_1, competences);
-//        lv2.setAdapter(arrayAdapterCompetences);
-        getCV();
-
 
     }
 
