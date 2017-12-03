@@ -73,41 +73,15 @@
             </RelativeLayout>
 
 
+
+
         </android.support.v7.widget.CardView>
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewQuestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
-
-            <EditText
-                android:id="@+id/editTextQ1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="¿Hace cuánto tiempo empezaste a trabajar o este es tu primer trabajo?"
-                android:inputType="textMultiLine" />
-
-            <EditText
-                android:id="@+id/editTextQ2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextQ1"
-                android:layout_marginTop="15dp"
-                android:ems="10"
-                android:hint="¿Has trabajado antes en el puesto solicitado?"
-                android:inputType="textMultiLine" />
-
-            <EditText
-                android:id="@+id/editTextQ3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextQ2"
-                android:layout_marginTop="15dp"
-                android:ems="10"
-                android:hint="Si respondiste que si a la pregunta anterior ¿Descríbenos tu experiencia?"
-                android:inputType="textMultiLine" />
-        </RelativeLayout>
+            android:layout_margin="10dp" />
 
     </LinearLayout>
 

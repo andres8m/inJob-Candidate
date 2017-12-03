@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +18,14 @@ import android.widget.Toast;
 import com.example.inin.injob.FileUploadService;
 import com.example.inin.injob.R;
 import com.example.inin.injob.data.remote.RetrofitClient;
+import com.example.inin.injob.jobs.adapters.PreInterViewAdapter;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewMainResponse;
+import com.example.inin.injob.models.jobs.preinterview.PreInterviewQuestion;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewResponse;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import okhttp3.MediaType;
@@ -39,6 +44,8 @@ public class PreInterview extends Fragment {
     TextView textViewDate;
     TextView textViewDescription;
     PreInterviewViewModel preInterviewViewModel;
+    RecyclerView recyclerView;
+    PreInterViewAdapter recyclerViewAdapter;
 
 
 
@@ -76,6 +83,13 @@ public class PreInterview extends Fragment {
         getAPIData();
 
         updateFrontEnd();
+
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerViewQuestions);
+        recyclerViewAdapter = new PreInterViewAdapter(this.getContext(),new ArrayList<PreInterviewQuestion>());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        recyclerView.setAdapter(recyclerViewAdapter);
+
         return root;
     }
 
@@ -88,6 +102,7 @@ public class PreInterview extends Fragment {
             public void onChanged(@Nullable PreInterviewResponse value) {
                 if (value != null) {
                     Toast.makeText(getContext(),value.getPosition()+" "+value.getLimitDate(),Toast.LENGTH_LONG).show();
+                    recyclerViewAdapter.addItems(value.getQuestions());
                 }
             }
         });
