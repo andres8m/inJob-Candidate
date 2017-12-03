@@ -99,6 +99,23 @@ public class PersonalInfo extends Fragment {
     private Boolean isChangedCv1 = false;
 //    Bitmap bitmap;
 //    ProgressDialog progress;
+
+
+    EditText editTextName;
+
+    Spinner s5;
+    Spinner s7;
+    ImageView imageView;
+    EditText editTextLName;
+    EditText editTextdpi;
+    EditText editTextcel;
+    EditText editTexttel;
+    EditText editTextDir;
+    EditText editTextZona;
+    EditText editTextNac;
+    Spinner spinner;
+
+
     public PersonalInfo() {
         // Required empty public constructor
     }
@@ -108,28 +125,35 @@ public class PersonalInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        getCV();
-        return inflater.inflate(R.layout.fragment_personal_info, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        buttonDPI        = (Button)view.findViewById(R.id.uploadImageDPI);
-        buttonPenales    = (Button)view.findViewById(R.id.uploadPenalesButton);
-        buttonPoliciacos = (Button)view.findViewById(R.id.uploadPoliciacosButton);
-
-
+        View root = inflater.inflate(R.layout.fragment_personal_info, container, false);
+        buttonDPI        = (Button)root.findViewById(R.id.uploadImageDPI);
+        buttonPenales    = (Button)root.findViewById(R.id.uploadPenalesButton);
+        buttonPoliciacos = (Button)root.findViewById(R.id.uploadPoliciacosButton);
+        editTextName = root.findViewById(R.id.editTextName);
+        s = (Spinner) root.findViewById(R.id.generos);
+        spinnerNacionalidades = (Spinner) root.findViewById(R.id.nacionalidad);
+        spinnerLicencia = (Spinner) root.findViewById(R.id.licencia);
+        spinnerVisa = (Spinner) root.findViewById(R.id.visa);
+        s5 = (Spinner) root.findViewById(R.id.pais);
+        s7 = (Spinner) root.findViewById(R.id.municipio);
+        imageView = (ImageView) root.findViewById(R.id.imageView2);
+        editTextLName = root.findViewById(R.id.editTextLastName);
+        editTextdpi = root.findViewById(R.id.editTextDPI);
+        editTextcel = root.findViewById(R.id.editTextCell);
+        editTexttel = root.findViewById(R.id.editTextPhone);
+        editTextDir = root.findViewById(R.id.editTextDireccion);
+        editTextZona = root.findViewById(R.id.editTextZona);
+        editTextNac = root.findViewById(R.id.birthday);
+        spinner = (Spinner) root.findViewById(R.id.departamento);
 
         buttonDPI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    selectedImageType = 1;
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent,"Selecciona imagen"),999);
+                selectedImageType = 1;
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Selecciona imagen"),999);
             }
         });
 
@@ -155,6 +179,13 @@ public class PersonalInfo extends Fragment {
             }
         });
 
+        getCV();
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
 
@@ -238,13 +269,16 @@ public class PersonalInfo extends Fragment {
 
                 if(response.code()==200)
                 {
-                    Snackbar.make(getView(), "¡Imagen guardada exitosamente!", Snackbar.LENGTH_LONG)
-                            .setAction("", null).show();
+                    Toast.makeText(getContext(),"¡Imagen guardada exitosamente!",Toast.LENGTH_LONG).show();
+//                    Snackbar.make(getView(), , Snackbar.LENGTH_LONG)
+//                            .setAction("", null).show();
                 }
                 else if(response.code()==413)
                 {
-                    Snackbar.make(getView(), "¡Imagen demasiado grande, por favor selecciona una imagen más pequeña!", Snackbar.LENGTH_LONG)
-                            .setAction("", null).show();
+                    Toast.makeText(getContext(),"¡Imagen demasiado grande, por favor selecciona una imagen más pequeña!",Toast.LENGTH_LONG).show();
+
+//                    Snackbar.make(getView(), , Snackbar.LENGTH_LONG)
+//                            .setAction("", null).show();
                 }
 
             }
@@ -252,9 +286,10 @@ public class PersonalInfo extends Fragment {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 
+                Toast.makeText(getContext(),"Lo sentimos, ¡por favor intente en un momento de nuevo!",Toast.LENGTH_LONG).show();
 
-                    Snackbar.make(getView(), "Lo sentimos, ¡por favor intente en un momento de nuevo!", Snackbar.LENGTH_LONG)
-                            .setAction("", null).show();
+//                    Snackbar.make(getView(), "Lo sentimos, ¡por favor intente en un momento de nuevo!", Snackbar.LENGTH_LONG)
+//                            .setAction("", null).show();
 
 //                Toast toast = Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG);
 //                toast.show();
@@ -410,28 +445,10 @@ public class PersonalInfo extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
 
-            if(getView()!=null)
-            {
-                //            List<String> arraySpinnerDepartment = new ArrayList<>();
-//
-//            for(DatumDepartment x: departmentResponse.getData())
-//            {
-//                String y = x.getName();
-//                arraySpinnerDepartment.add(y);
-//            }
-//
-                Spinner spinner = (Spinner) getView().findViewById(R.id.departamento);
-//            ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(getContext(),
-//                    android.R.layout.simple_spinner_item, arraySpinnerDepartment);
-//            s6.setAdapter(adapter5);
-//            s6.setSelection();
 
-//            Spinner spinner = (Spinner) findViewById(R.id.spinner);
-                ArrayAdapter<DatumDepartment> adapter = new ArrayAdapter<DatumDepartment>(getContext()
-                        ,android.R.layout.simple_spinner_item,departmentResponse.getData()); // initialize the adapter
-//            adapter.setDropDownViewResource(android.R.layout.some_view);
+                ArrayAdapter<DatumDepartment> adapter = new ArrayAdapter<DatumDepartment>(getContext(),android.R.layout.simple_spinner_item,departmentResponse.getData()); // initialize the adapter
                 spinner.setAdapter(adapter);
-            }
+
             super.onPostExecute(aVoid);
 
 
@@ -472,12 +489,8 @@ public class PersonalInfo extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if(getView()!=null)
-            {
-                setDataInView(getView());
-//            progress.dismiss();
-            }
 
+            setDataInView();
             super.onPostExecute(aVoid);
         }
 
@@ -549,7 +562,7 @@ public class PersonalInfo extends Fragment {
 
 
 
-    public void setDataInView(View view) {
+    public void setDataInView() {
 
            this.arraySpinnerNacionalidades = new String[]{"Guatemalteca", "Mexicana", "Salvadoreña", "Hondureña", "Nicaraguense", "Costaricense",
                    "Estadounidense", "Canadiense", "Española","Británica","Alemana","Beliceña", "Surcoreana", "Francesa", "Colombiana","Panameña",
@@ -565,29 +578,20 @@ public class PersonalInfo extends Fragment {
                     "Perú","Argentina","Chile","Panamá","España"};
 
 
-
-
-           final EditText editTextName = view.findViewById(R.id.editTextName);
            editTextName.setText(UserData.Instance().getCv1().getNombre());
 
-           final EditText editTextLName = view.findViewById(R.id.editTextLastName);
            editTextLName.setText(UserData.Instance().getCv1().getApellido());
 
-           final EditText editTextdpi = view.findViewById(R.id.editTextDPI);
            editTextdpi.setText(UserData.Instance().getCv1().getIdentificacion());
 
-           final EditText editTextcel = view.findViewById(R.id.editTextCell);
            editTextcel.setText(UserData.Instance().getCv1().getCelular());
 
-           final EditText editTexttel = view.findViewById(R.id.editTextPhone);
+
            editTexttel.setText(UserData.Instance().getCv1().getTelefono());
 
-           final EditText editTextDir = view.findViewById(R.id.editTextDireccion);
            editTextDir.setText(UserData.Instance().getCv1().getDireccion());
 
-           final EditText editTextZona = view.findViewById(R.id.editTextZona);
            editTextZona.setText(UserData.Instance().getCv1().getZona());
-           EditText editTextNac = view.findViewById(R.id.birthday);
 
 
            if(UserData.Instance().getCv1().getNacimiento()!=null)
@@ -613,12 +617,10 @@ public class PersonalInfo extends Fragment {
            }
 
 
-           s = (Spinner) view.findViewById(R.id.generos);
            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerGenero);
            s.setAdapter(adapter);
 
-           spinnerNacionalidades = (Spinner) view.findViewById(R.id.nacionalidad);
            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
            spinnerNacionalidades.setAdapter(adapter2);
@@ -630,14 +632,12 @@ public class PersonalInfo extends Fragment {
                spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
            }
 
-           spinnerLicencia = (Spinner) view.findViewById(R.id.licencia);
            ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerLicencia);
            spinnerLicencia.setAdapter(adapter3);
            spinnerLicencia.setSelection(getLicenseIndexByValue(UserData.Instance().getCv1().getLicencia()));
 //        spinnerLicencia.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
 
-           spinnerVisa = (Spinner) view.findViewById(R.id.visa);
            ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerVisa);
            spinnerVisa.setAdapter(adapter4);
@@ -657,8 +657,7 @@ public class PersonalInfo extends Fragment {
            }
 
 
-           Spinner s5 = (Spinner) view.findViewById(R.id.pais);
-           Spinner s7 = (Spinner) view.findViewById(R.id.municipio);
+
            ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this.getActivity(),
                    android.R.layout.simple_spinner_item, arraySpinnerCountry);
 
@@ -671,7 +670,6 @@ public class PersonalInfo extends Fragment {
 
            s7.setAdapter(adapter5);
 
-           ImageView imageView = (ImageView) view.findViewById(R.id.imageView2);
            Context context = getActivity();
            if(UserData.Instance().getCv1().getFoto()!=null)
            {
