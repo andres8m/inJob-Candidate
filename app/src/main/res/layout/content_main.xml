@@ -57,6 +57,14 @@
             android:hint="Contraseña"
             android:inputType="textPassword" />
 
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/background_dark"
+            android:visibility="gone" />
+
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
@@ -71,8 +79,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:autoLink="web"
+            android:layout_marginTop="50dp"
             android:clickable="true"
             android:linksClickable="true"
             android:text="@string/registerInin"

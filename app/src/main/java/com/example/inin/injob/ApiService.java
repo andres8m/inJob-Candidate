@@ -1,5 +1,6 @@
 package com.example.inin.injob;
 
+import com.example.inin.injob.models.RegisterModel;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewMainResponse;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewRequest;
 
@@ -48,5 +49,8 @@ public interface ApiService {
 
     @POST("rrhh/preinterview/response")
     Call<ResponseBody> postPreInterview(@Body List<PreInterviewRequest> request, @Header("Authorization") String token);
+
+    @POST("user/register")
+    Call<ResponseBody> registerUser(@Body RegisterModel request);
 
 }
