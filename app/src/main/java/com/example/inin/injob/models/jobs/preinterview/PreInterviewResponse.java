@@ -40,11 +40,11 @@ public class PreInterviewResponse {
 
     @SerializedName("limitDate")
     @Expose
-    private long limitDate;
+    private Long limitDate;
 
     @SerializedName("submitDate")
     @Expose
-    private long submitDate;
+    private Long submitDate;
 
     @SerializedName("preintId")
     @Expose

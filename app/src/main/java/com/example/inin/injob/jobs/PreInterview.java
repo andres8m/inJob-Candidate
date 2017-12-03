@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -76,6 +78,10 @@ public class PreInterview extends Fragment {
                             .setAction("", null).show();
 
 
+                    FragmentManager manager = getFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.principal_container, new Jobs());
+                    transaction.commit();
 
                 }
                 else
@@ -165,6 +171,38 @@ public class PreInterview extends Fragment {
             public void onChanged(@Nullable PreInterviewResponse value) {
                 if (value != null) {
 //                    Toast.makeText(getContext(),value.getPosition()+" "+value.getLimitDate(),Toast.LENGTH_LONG).show();
+
+                    if(value.getSubmitDate()!=null && value.getLimitDate()!=null)
+                    {
+                        Date date = new Date(value.getSubmitDate());
+                        SimpleDateFormat df2 = new SimpleDateFormat("dd/MM/yy");
+                        String dateText = df2.format(date);
+
+
+                        Date dateLimit = new Date(value.getLimitDate());
+                        SimpleDateFormat df3 = new SimpleDateFormat("dd/MM/yy");
+                        String dateTextLimit = df3.format(date);
+                        textViewDate.setText(dateText +" - " + dateTextLimit);
+                    }
+
+                    if(value.isAnswered())
+                    {
+                        saveButton.setEnabled(false);
+                        saveButton.getBackground().setAlpha(100);
+
+
+                        FragmentManager manager = getFragmentManager();
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        transaction.replace(R.id.principal_container, new Jobs());
+                        saveButton.getBackground().setAlpha(255);
+                        transaction.commit();
+
+
+                    }
+
+
+
+
                     if(value.getQuestions()!=null)
                     {
                         recyclerViewAdapter.addItems(value.getQuestions());
