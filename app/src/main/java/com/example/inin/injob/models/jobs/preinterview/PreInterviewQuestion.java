@@ -28,4 +28,7 @@ public class PreInterviewQuestion {
     @Expose
     private Long preInterview;
 
+    @Expose(serialize = false, deserialize = false)
+    private String answer;
+
 }

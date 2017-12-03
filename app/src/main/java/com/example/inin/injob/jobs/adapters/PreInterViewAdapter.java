@@ -2,6 +2,8 @@ package com.example.inin.injob.jobs.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.inin.injob.R;
+import com.example.inin.injob.jobs.PreInterview;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewQuestion;
 
 import java.text.SimpleDateFormat;
@@ -26,6 +29,12 @@ public class PreInterViewAdapter extends RecyclerView.Adapter<PreInterViewAdapte
     private List<PreInterviewQuestion> list;
     private LayoutInflater inflater;
 
+
+    public List<PreInterviewQuestion> getAllItems()
+    {
+        return list;
+    }
+
     public PreInterViewAdapter(Context context, List<PreInterviewQuestion> list) {
         inflater = LayoutInflater.from(context);
         this.list = list;
@@ -40,6 +49,25 @@ public class PreInterViewAdapter extends RecyclerView.Adapter<PreInterViewAdapte
             super(itemView);
             itemView.setOnClickListener(this);
             editTextQuestion = (EditText) itemView.findViewById(R.id.editTextQuestion);
+
+
+
+            editTextQuestion.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // TODO Auto-generated method stub
+                }
+
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    // TODO Auto-generated method stub
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    currentObject.setAnswer(editTextQuestion.getText().toString());
+                }
+            });
         }
 
 
@@ -49,6 +77,9 @@ public class PreInterViewAdapter extends RecyclerView.Adapter<PreInterViewAdapte
             this.currentObject = current;
         }
 
+
+
+
         @Override
         public void onClick(View v) {
 //            Toast.makeText(v.getContext(),currentObject.getTitle(),Toast.LENGTH_LONG).show();
@@ -57,6 +88,7 @@ public class PreInterViewAdapter extends RecyclerView.Adapter<PreInterViewAdapte
 
 
         }
+
     }
 
     @Override

@@ -12,25 +12,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.inin.injob.FileUploadService;
+import com.example.inin.injob.ApiService;
 import com.example.inin.injob.R;
 import com.example.inin.injob.data.remote.RetrofitClient;
 import com.example.inin.injob.jobs.adapters.PreInterViewAdapter;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewMainResponse;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewQuestion;
+import com.example.inin.injob.models.jobs.preinterview.PreInterviewRequest;
 import com.example.inin.injob.models.jobs.preinterview.PreInterviewResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +45,62 @@ public class PreInterview extends Fragment {
     PreInterviewViewModel preInterviewViewModel;
     RecyclerView recyclerView;
     PreInterViewAdapter recyclerViewAdapter;
+    Button saveButton;
 
+    public void savePreIV()
+    {
+        List<PreInterviewQuestion> allItems = recyclerViewAdapter.getAllItems();
+//        Toast.makeText(getContext(),preInterviewQuestion.getAnswer(),Toast.LENGTH_LONG).show();
+        List<PreInterviewRequest> request = new ArrayList<>();
+        for(PreInterviewQuestion x: allItems)
+        {
+            PreInterviewRequest preInterviewRequest = new PreInterviewRequest();
+            preInterviewRequest.setQuestion(x.getId());
+            preInterviewRequest.setText(x.getAnswer());
+            request.add(preInterviewRequest);
+        }
+
+
+        ApiService client = RetrofitClient.getClient("https://app.inin.global/api/").create(ApiService.class);
+        Call<ResponseBody> call = client.postPreInterview(request,"Bearer "+UserData.Instance().getToken());
+
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+//                Toast toast = Toast.makeText(getActivity(), response.message(), Toast.LENGTH_LONG);
+//                toast.show();
+
+                if(response.code()==200)
+                {
+                    Snackbar.make(getView(), "¡Aplicó exitosamente a la plaza!", Snackbar.LENGTH_LONG)
+                            .setAction("", null).show();
+
+
+
+                }
+                else
+                {
+                    Snackbar.make(getView(), "¡Hubo un error, por favor contacté a soporte tecnico!", Snackbar.LENGTH_LONG)
+                            .setAction("", null).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+
+                Snackbar.make(getView(), "Lo sentimos, ¡por favor intente en un momento de nuevo!", Snackbar.LENGTH_LONG)
+                        .setAction("", null).show();
+
+//                Toast toast = Toast.makeText(getActivity(), t.getMessage(), Toast.LENGTH_LONG);
+//                toast.show();
+
+            }
+        });
+
+
+    }
 
 
     public PreInterview() {
@@ -60,11 +114,15 @@ public class PreInterview extends Fragment {
         // Inflate the layout for this fragment
         View root= inflater.inflate(R.layout.fragment_pre_interview, container, false);
         preInterviewViewModel = ViewModelProviders.of(getActivity()).get(PreInterviewViewModel.class);
-
         textViewTitle = root.findViewById(R.id.offer_name);
         textViewDate = root.findViewById(R.id.offer_date);
         textViewDescription = root.findViewById(R.id.offer_detail);
 
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerViewQuestions);
+        recyclerViewAdapter = new PreInterViewAdapter(this.getContext(),new ArrayList<PreInterviewQuestion>());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        recyclerView.setAdapter(recyclerViewAdapter);
+        saveButton = root.findViewById(R.id.buttonSave);
         // If the start date is not defined, it's a new ViewModel so set it.
         if(preInterviewViewModel.getPreInterview()!=null)
         {
@@ -81,17 +139,22 @@ public class PreInterview extends Fragment {
         }
 
         getAPIData();
-
         updateFrontEnd();
 
-        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerViewQuestions);
-        recyclerViewAdapter = new PreInterViewAdapter(this.getContext(),new ArrayList<PreInterviewQuestion>());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        recyclerView.setAdapter(recyclerViewAdapter);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                savePreIV();
+            }
+        });
+
 
         return root;
     }
+
+
+
 
 
     public void updateFrontEnd()
@@ -101,8 +164,11 @@ public class PreInterview extends Fragment {
             @Override
             public void onChanged(@Nullable PreInterviewResponse value) {
                 if (value != null) {
-                    Toast.makeText(getContext(),value.getPosition()+" "+value.getLimitDate(),Toast.LENGTH_LONG).show();
-                    recyclerViewAdapter.addItems(value.getQuestions());
+//                    Toast.makeText(getContext(),value.getPosition()+" "+value.getLimitDate(),Toast.LENGTH_LONG).show();
+                    if(value.getQuestions()!=null)
+                    {
+                        recyclerViewAdapter.addItems(value.getQuestions());
+                    }
                 }
             }
         });
@@ -124,7 +190,7 @@ public class PreInterview extends Fragment {
     private void getAPIData() {
 
 
-        FileUploadService client = RetrofitClient.getClient("https://app.inin.global/api/").create(FileUploadService.class);
+        ApiService client = RetrofitClient.getClient("https://app.inin.global/api/").create(ApiService.class);
         Call<PreInterviewMainResponse> call = client.getSpecificPreInterview(preInterviewViewModel.getPreInterview().getIdPreinterview(),"Bearer "+UserData.Instance().getToken());
 
         call.enqueue(new Callback<PreInterviewMainResponse>() {

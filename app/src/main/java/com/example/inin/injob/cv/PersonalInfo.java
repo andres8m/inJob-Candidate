@@ -29,7 +29,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.inin.injob.FileUploadService;
+import com.example.inin.injob.ApiService;
 import com.example.inin.injob.data.remote.MySingleton;
 import com.example.inin.injob.PathUtil;
 import com.example.inin.injob.R;
@@ -212,7 +212,7 @@ public class PersonalInfo extends Fragment {
 
 //        Retrofit retrofit = builder.build();
 
-        FileUploadService client = RetrofitClient.getClient("https://app.inin.global/api/cv/").create(FileUploadService.class);
+        ApiService client = RetrofitClient.getClient("https://app.inin.global/api/cv/").create(ApiService.class);
         Call<ResponseBody> call = null;
         switch (selectedImageType)
         {
