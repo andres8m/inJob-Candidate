@@ -23,22 +23,11 @@
 
 
                 <TextView
-                    android:id="@+id/person_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:text="Experiencia académica"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/person_age"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/person_name"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
                     android:text="Aquí puedes colocar tu experienca académica, recuerda que para validar tus conocimientos puedes subir una foto de tu certificación o título"
                     android:textAlignment="center"
                     android:textSize="12sp" />
@@ -61,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:text="Añadir nueva experiencia"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:theme="@style/PrimaryFlatButton" />
 
                     <!--<Button-->

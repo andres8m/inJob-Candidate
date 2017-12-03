@@ -1,27 +1,19 @@
 package com.example.inin.injob.cv;
 
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +21,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,18 +29,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.example.inin.injob.Dashboard;
 import com.example.inin.injob.FileUploadService;
-import com.example.inin.injob.MainActivity;
-import com.example.inin.injob.MySingleton;
+import com.example.inin.injob.data.remote.MySingleton;
 import com.example.inin.injob.PathUtil;
 import com.example.inin.injob.R;
-import com.example.inin.injob.StepsFragment;
 import com.example.inin.injob.data.remote.RetrofitClient;
-import com.example.inin.injob.models.LoginResponse;
 import com.example.inin.injob.models.UserData;
-import com.example.inin.injob.models.cv1.Cv1UserData;
 import com.example.inin.injob.models.cv1.CvResponse;
 import com.example.inin.injob.models.cv1.DataCV1;
 import com.example.inin.injob.models.cv1.department.DatumDepartment;
@@ -59,24 +43,14 @@ import com.example.inin.injob.models.cv1.town.TownResponse;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
-import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.EventListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -85,8 +59,6 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.app.Activity.RESULT_OK;
 

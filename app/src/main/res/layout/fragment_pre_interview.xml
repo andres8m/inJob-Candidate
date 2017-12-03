@@ -1,0 +1,118 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.inin.injob.jobs.PreInterview">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            card_view:cardCornerRadius="3dp"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/offer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/offer_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/offer_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/offer_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/offer_date"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="viewStart"
+                    android:textSize="12sp" />
+
+                <!--<Button-->
+                <!--android:id="@+id/details_button"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/offer_detail"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:layout_marginTop="15dp"-->
+                <!--android:background="@color/colorLight"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="15dp"-->
+                <!--android:text="@string/details"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textColorLink="@android:color/white" />-->
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <EditText
+                android:id="@+id/editTextQ1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="¿Hace cuánto tiempo empezaste a trabajar o este es tu primer trabajo?"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextQ2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextQ1"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="¿Has trabajado antes en el puesto solicitado?"
+                android:inputType="textMultiLine" />
+
+            <EditText
+                android:id="@+id/editTextQ3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextQ2"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Si respondiste que si a la pregunta anterior ¿Descríbenos tu experiencia?"
+                android:inputType="textMultiLine" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</ScrollView>

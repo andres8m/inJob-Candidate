@@ -22,7 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.inin.injob.MySingleton;
+import com.example.inin.injob.data.remote.MySingleton;
 import com.example.inin.injob.R;
 import com.example.inin.injob.models.UserData;
 import com.example.inin.injob.models.cv5.DatumCv5;

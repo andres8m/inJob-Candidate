@@ -1,27 +1,32 @@
 package com.example.inin.injob.jobs;
 
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.inin.injob.MySingleton;
+import com.example.inin.injob.MainFragment;
+import com.example.inin.injob.data.remote.MySingleton;
 import com.example.inin.injob.R;
-import com.example.inin.injob.cv.PersonalInfo;
 import com.example.inin.injob.jobs.adapters.JobsListAdapter;
 import com.example.inin.injob.models.UserData;
+import com.example.inin.injob.models.jobs.DatumJobs;
 import com.example.inin.injob.models.jobs.JobsResponse;
 import com.google.gson.Gson;
 
@@ -35,11 +40,31 @@ import java.util.Map;
  */
 public class Jobs extends Fragment {
 
-
+    PreInterviewViewModel preInterviewViewModel;
     public Jobs() {
         // Required empty public constructor
     }
 
+//    public void onMethodCallback() {
+//        Snackbar.make(getView(), "¡Imagen demasiado grande, por favor selecciona una imagen más pequeña!", Snackbar.LENGTH_LONG)
+//                .setAction("", null).show();    }
+
+    public void showM(DatumJobs datumJobs)
+    {
+//        Toast.makeText(getContext(),datumJobs.getTitle(),Toast.LENGTH_LONG).show();
+        preInterviewViewModel.setPreInterview(datumJobs);
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.principal_container, new PreInterview());
+        transaction.commit();
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        preInterviewViewModel = ViewModelProviders.of(getActivity()).get(PreInterviewViewModel.class);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,7 +82,7 @@ public class Jobs extends Fragment {
     public void setDataToView()
     {
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
-        JobsListAdapter adapter = new JobsListAdapter(this.getContext(), UserData.Instance().getJobs());
+        JobsListAdapter adapter = new JobsListAdapter(this.getContext(), UserData.Instance().getJobs(), Jobs.this);
         recyclerView.setAdapter(adapter);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext());

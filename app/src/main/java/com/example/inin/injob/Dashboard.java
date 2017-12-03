@@ -70,9 +70,6 @@ public class Dashboard extends AppCompatActivity
 //        ProgressBar loadBar = findViewById(R.id.indeterminateBar);
 //        loadBar.setVisibility(View.INVISIBLE);
 
-
-
-
     }
 
     @Override

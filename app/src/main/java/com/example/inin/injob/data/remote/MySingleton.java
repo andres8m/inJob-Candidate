@@ -1,4 +1,4 @@
-package com.example.inin.injob;
+package com.example.inin.injob.data.remote;
 
 import android.content.Context;
 import android.graphics.Bitmap;

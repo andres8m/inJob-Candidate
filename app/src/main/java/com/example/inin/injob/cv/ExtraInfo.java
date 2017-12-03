@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,20 +20,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.example.inin.injob.MySingleton;
+import com.example.inin.injob.data.remote.MySingleton;
 import com.example.inin.injob.R;
 import com.example.inin.injob.models.UserData;
-import com.example.inin.injob.models.cv4.DatumCv4;
 import com.example.inin.injob.models.cv6.Cv6Response;
 import com.example.inin.injob.models.cv6.DatumCv6;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

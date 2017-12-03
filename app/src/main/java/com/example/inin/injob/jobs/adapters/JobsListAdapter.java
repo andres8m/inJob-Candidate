@@ -1,14 +1,21 @@
 package com.example.inin.injob.jobs.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.inin.injob.MainFragment;
 import com.example.inin.injob.R;
+import com.example.inin.injob.jobs.Jobs;
 import com.example.inin.injob.models.jobs.DatumJobs;
 
 import java.text.SimpleDateFormat;
@@ -23,25 +30,35 @@ public class JobsListAdapter extends RecyclerView.Adapter<JobsListAdapter.MyView
 
     private List<DatumJobs> list;
     private LayoutInflater inflater;
+    Jobs fragment;
 
-    public JobsListAdapter(Context context, List<DatumJobs> list) {
+    public JobsListAdapter(Context context, List<DatumJobs> list, Jobs fragment) {
         inflater = LayoutInflater.from(context);
         this.list = list;
+        this.fragment = fragment;
+
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView offerName;
         private TextView offerDescription;
         private TextView offerDate;
+        private Button button;
+
+
 
         private DatumJobs currentObject;
         public MyViewHolder (View itemView)
         {
             super(itemView);
+            itemView.setOnClickListener(this);
             offerName = (TextView) itemView.findViewById(R.id.offer_name);
             offerDescription = (TextView) itemView.findViewById(R.id.offer_detail);
             offerDate = (TextView) itemView.findViewById(R.id.offer_date);
+            button = (Button) itemView.findViewById(R.id.applyButton);
         }
+
+
 
         public void setData(DatumJobs current, int position) {
 
@@ -56,6 +73,15 @@ public class JobsListAdapter extends RecyclerView.Adapter<JobsListAdapter.MyView
             }
 
             this.currentObject = current;
+        }
+
+        @Override
+        public void onClick(View v) {
+//            Toast.makeText(v.getContext(),currentObject.getTitle(),Toast.LENGTH_LONG).show();
+
+                fragment.showM(currentObject);
+
+
         }
     }
 
@@ -76,6 +102,9 @@ public class JobsListAdapter extends RecyclerView.Adapter<JobsListAdapter.MyView
     public int getItemCount() {
         return list.size();
     }
+
+
+
 
 
 

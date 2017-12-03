@@ -45,6 +45,6 @@ Una vez termines de llenar tu CV se enviará a tu correo un link para que te pue
         </a>
     </string>
     <string name="email">Correo Electronico</string>
-    <string name="newReference">Agregar nueva referencia</string>
+    <string name="newReference">Agregar referencia</string>
 
 </resources>
