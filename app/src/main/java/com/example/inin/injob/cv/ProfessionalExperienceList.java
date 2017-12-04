@@ -40,6 +40,8 @@ import java.util.Map;
  */
 public class ProfessionalExperienceList extends Fragment {
 
+    Button addBtn;
+    RecyclerView recyclerView;
 
     public ProfessionalExperienceList() {
         // Required empty public constructor
@@ -52,19 +54,11 @@ public class ProfessionalExperienceList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_professional_experience_list, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getCV();
-
-        final FragmentManager manager = getFragmentManager();
-        final FragmentTransaction transaction = manager.beginTransaction();
+        View root = inflater.inflate(R.layout.fragment_professional_experience_list, container, false);
+        addBtn = (Button) root.findViewById(R.id.newInterest);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view);
 
 
-        Button addBtn = (Button) getView().findViewById(R.id.newInterest);
         addBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
@@ -73,6 +67,16 @@ public class ProfessionalExperienceList extends Fragment {
 
             }
         });
+
+        getCV();
+        return root;
+
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
 
     }
 
@@ -85,9 +89,7 @@ public class ProfessionalExperienceList extends Fragment {
 
     public void setDataToView()
     {
-        View view = getView();
-        assert view != null;
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+
         ExperienceListAdapter adapter = new ExperienceListAdapter(this.getContext(), UserData.Instance().getCv3());
         recyclerView.setAdapter(adapter);
 
@@ -110,10 +112,8 @@ public class ProfessionalExperienceList extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            if(getView()!=null)
-            {
                 setDataToView();
-            }
+
         }
 
         @Override

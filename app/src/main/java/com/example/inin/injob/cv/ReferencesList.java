@@ -37,7 +37,7 @@ import java.util.Map;
  */
 public class ReferencesList extends Fragment {
 
-
+    RecyclerView recyclerView;
     public ReferencesList() {
         // Required empty public constructor
     }
@@ -47,7 +47,9 @@ public class ReferencesList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_references_list, container, false);
+        View root = inflater.inflate(R.layout.fragment_references_list, container, false);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view);
+        return root;
     }
 
     @Override
@@ -121,11 +123,7 @@ public class ReferencesList extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if(getView()!=null)
-            {
                 setDataToView();
-            }
-
         }
 
         @Override
@@ -155,7 +153,6 @@ public class ReferencesList extends Fragment {
 
     public void setDataToView()
     {
-        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
         ReferencesListAdapter adapter = new ReferencesListAdapter(this.getContext(), UserData.Instance().getCv7());
         recyclerView.setAdapter(adapter);
 

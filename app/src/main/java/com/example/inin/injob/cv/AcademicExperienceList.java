@@ -37,6 +37,8 @@ import java.util.Map;
  */
 public class AcademicExperienceList extends Fragment {
 
+    Button addBtn;
+    RecyclerView recyclerView;
 
     public AcademicExperienceList() {
         // Required empty public constructor
@@ -53,16 +55,10 @@ public class AcademicExperienceList extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_academic_experience_list, container, false);
-    }
+        View root = inflater.inflate(R.layout.fragment_academic_experience_list, container, false);
+        addBtn = (Button) root.findViewById(R.id.addAcademicBtn);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getCV();
-
-
-        Button addBtn = (Button) getView().findViewById(R.id.addAcademicBtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
@@ -72,11 +68,21 @@ public class AcademicExperienceList extends Fragment {
             }
         });
 
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        getCV();
+
+
+
+
     }
 
     public void setDataToView()
     {
-        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
         AcademicListAdapter adapter = new AcademicListAdapter(this.getContext(), UserData.Instance().getCv4());
         recyclerView.setAdapter(adapter);
 
@@ -99,10 +105,9 @@ public class AcademicExperienceList extends Fragment {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            if(getView()!=null)
-            {
+
                 setDataToView();
-            }
+
         }
 
         @Override

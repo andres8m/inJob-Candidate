@@ -146,6 +146,22 @@ public class PersonalInfo extends Fragment {
         editTextNac = root.findViewById(R.id.birthday);
         spinner = (Spinner) root.findViewById(R.id.departamento);
 
+        if(getActivity()!=null)
+        {
+            FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    attemptSaveCv1(editTextLName.getText().toString(),editTextcel.getText().toString(),editTextDir.getText().toString(),
+                            editTextdpi.getText().toString(),editTextName.getText().toString(),editTexttel.getText().toString(),
+                            editTextZona.getText().toString(), spinnerNacionalidades.getSelectedItemPosition()+1);
+
+                }
+            });
+
+        }
+
         buttonDPI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -617,14 +633,18 @@ public class PersonalInfo extends Fragment {
            }
 
 
-           ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(),
-                   android.R.layout.simple_spinner_item, arraySpinnerGenero);
-           s.setAdapter(adapter);
+           if(this.getContext()!=null)
+           {
+               ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),
+                       android.R.layout.simple_spinner_item, arraySpinnerGenero);
+               s.setAdapter(adapter);
 
-           ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(),
-                   android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
-           spinnerNacionalidades.setAdapter(adapter2);
-           spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad());
+               ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getContext(),
+                       android.R.layout.simple_spinner_item, arraySpinnerNacionalidades);
+               spinnerNacionalidades.setAdapter(adapter2);
+               spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad());
+           }
+
 
 
            if(UserData.Instance().getCv1().getNacionalidad()!=null)
@@ -632,15 +652,29 @@ public class PersonalInfo extends Fragment {
                spinnerNacionalidades.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
            }
 
-           ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
-                   android.R.layout.simple_spinner_item, arraySpinnerLicencia);
-           spinnerLicencia.setAdapter(adapter3);
-           spinnerLicencia.setSelection(getLicenseIndexByValue(UserData.Instance().getCv1().getLicencia()));
+            if(this.getContext()!=null)
+            {
+                ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(),
+                        android.R.layout.simple_spinner_item, arraySpinnerLicencia);
+                spinnerLicencia.setAdapter(adapter3);
+                spinnerLicencia.setSelection(getLicenseIndexByValue(UserData.Instance().getCv1().getLicencia()));
 //        spinnerLicencia.setSelection(UserData.Instance().getCv1().getNacionalidad() - 1);
 
-           ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(),
-                   android.R.layout.simple_spinner_item, arraySpinnerVisa);
-           spinnerVisa.setAdapter(adapter4);
+                ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(),
+                        android.R.layout.simple_spinner_item, arraySpinnerVisa);
+                spinnerVisa.setAdapter(adapter4);
+
+                ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this.getActivity(),
+                        android.R.layout.simple_spinner_item, arraySpinnerCountry);
+
+                s5.setAdapter(adapter5);
+                s5.setSelection(UserData.Instance().getCv1().getPais()-6);
+
+                getDepartment(UserData.Instance().getCv1().getPais());
+
+                s7.setAdapter(adapter5);
+            }
+
 
            if(UserData.Instance().getCv1().getVisa()!=null)
            {
@@ -658,17 +692,11 @@ public class PersonalInfo extends Fragment {
 
 
 
-           ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this.getActivity(),
-                   android.R.layout.simple_spinner_item, arraySpinnerCountry);
 
 
 
-           s5.setAdapter(adapter5);
-           s5.setSelection(UserData.Instance().getCv1().getPais()-6);
 
-           getDepartment(UserData.Instance().getCv1().getPais());
 
-           s7.setAdapter(adapter5);
 
            Context context = getActivity();
            if(UserData.Instance().getCv1().getFoto()!=null)
@@ -817,16 +845,7 @@ public class PersonalInfo extends Fragment {
 
 
 
-           FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-           fab.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View view) {
-                   attemptSaveCv1(editTextLName.getText().toString(),editTextcel.getText().toString(),editTextDir.getText().toString(),
-                           editTextdpi.getText().toString(),editTextName.getText().toString(),editTexttel.getText().toString(),
-                           editTextZona.getText().toString(), spinnerNacionalidades.getSelectedItemPosition()+1);
 
-               }
-           });
 
 
        }

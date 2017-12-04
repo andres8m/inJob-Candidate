@@ -41,6 +41,7 @@ public class JobInterest extends Fragment {
     SearchView searchView;
 
 
+
     public JobInterest() {
         // Required empty public constructor
     }
@@ -53,14 +54,13 @@ public class JobInterest extends Fragment {
         View root = inflater.inflate(R.layout.fragment_job_interest, container, false);
 
         listViewInterests = root.findViewById(R.id.interestListView);
-        searchView = root.findViewById(R.id.searchTxt);
         getCV();
         return root;
     }
 
     public class parseJson extends AsyncTask<JSONObject,Void,Void>
     {
-        Context context = getContext();
+        Context context = getActivity();
         @Override
         protected void onPreExecute() {
 
@@ -81,24 +81,29 @@ public class JobInterest extends Fragment {
 
                 List<DatumCv2> cv2s = new ArrayList<>();
 
-                final ArrayAdapter<String> arrayAdapterInterests = new ArrayAdapter<String>(
-                        context, android.R.layout.simple_list_item_1, interests);
-                listViewInterests.setAdapter(arrayAdapterInterests);
+                if(this.context!=null)
+                {
+                    ArrayAdapter<String> arrayAdapterInterests = new ArrayAdapter<String>(
+                            this.context, android.R.layout.simple_list_item_1, interests);
+                    listViewInterests.setAdapter(arrayAdapterInterests);
+                }
 
 
 
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        return false;
-                    }
 
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        arrayAdapterInterests.getFilter().filter(newText);
-                        return false;
-                    }
-                });
+
+//                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//                    @Override
+//                    public boolean onQueryTextSubmit(String query) {
+//                        return false;
+//                    }
+//
+//                    @Override
+//                    public boolean onQueryTextChange(String newText) {
+//                        arrayAdapterInterests.getFilter().filter(newText);
+//                        return false;
+//                    }
+//                });
 
 
 

@@ -41,6 +41,8 @@ import java.util.Map;
 public class InterestFragment extends DialogFragment {
 
     ListView listView;
+    ListView listViewInterests;
+    SearchView searchView;
     public InterestFragment() {
         // Required empty public constructor
     }
@@ -50,7 +52,11 @@ public class InterestFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_interest, container, false);
+        View root= inflater.inflate(R.layout.fragment_interest, container, false);
+        listViewInterests = root.findViewById(R.id.interestListView);
+
+        return root;
+
     }
 
     @Override
@@ -119,11 +125,8 @@ public class InterestFragment extends DialogFragment {
         @Override
         protected void onPostExecute(Void aVoid) {
 
-            if(getView()!=null)
-            {
-                ListView listViewInterests = getView().findViewById(R.id.interestListView);
+
                 List<String> interests = new ArrayList<>();
-                SearchView searchView = getView().findViewById(R.id.searchTxt);
 
                 for(DatumCv2 x :  UserData.Instance().getCv2().getInterests())
                 {
@@ -150,7 +153,7 @@ public class InterestFragment extends DialogFragment {
                         return false;
                     }
                 });
-            }
+
 
 
 

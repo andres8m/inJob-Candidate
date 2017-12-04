@@ -84,11 +84,6 @@
                 <!--android:textSize="18sp"-->
                 <!--android:textStyle="bold" />-->
 
-            <SearchView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/searchTxt"/>
-
             <ListView
                 android:id="@+id/interestListView"
                 android:layout_width="match_parent"

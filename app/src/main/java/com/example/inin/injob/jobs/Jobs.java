@@ -41,6 +41,7 @@ import java.util.Map;
 public class Jobs extends Fragment {
 
     PreInterviewViewModel preInterviewViewModel;
+    RecyclerView recyclerView;
     public Jobs() {
         // Required empty public constructor
     }
@@ -70,7 +71,9 @@ public class Jobs extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jobs, container, false);
+        View root = inflater.inflate(R.layout.fragment_jobs, container, false);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recycler_view);
+        return root;
     }
 
     @Override
@@ -81,7 +84,7 @@ public class Jobs extends Fragment {
 
     public void setDataToView()
     {
-        RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
+
         JobsListAdapter adapter = new JobsListAdapter(this.getContext(), UserData.Instance().getJobs(), Jobs.this);
         recyclerView.setAdapter(adapter);
 
